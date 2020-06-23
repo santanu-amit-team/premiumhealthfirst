@@ -1,0 +1,31 @@
+<div layout="row" layout-align="center" class="wrap-top-gap">
+    <md-content class="f1f1f1" flex>
+        <form name="CrmForm" ng-submit="saveExtension()" novalidate>
+            <div md-whiteframe="3" layout-padding layout-margin  style="background: white">
+                <div class="row-form-panel">
+                    <p class="md-title" layout-padding>Asynchronous Prospect</p>
+                </div>
+                <div class="row-form-panel">
+                    <div layout="row">
+                        <div flex="100" layout="column" flex="nogrow">
+                            <md-switch class="right-shift" ng-model="extension.note_for_prospect"><h2 class="mat-h2">Allow Note For Prospects</h2></md-switch>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-form-panel">
+                    <div layout="row">
+                        <div flex="100" layout="column" flex="nogrow">
+                            <md-switch class="right-shift" ng-model="extension.exclude_source_url"><h2 class="mat-h2">Exclude Source URL From Notes</h2></md-switch>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="top-gap-25 layout-margin">
+                <div layout="row" layout-align="end">
+                    <md-button  type="button" class="md-raised" ng-href="#/extensions">Cancel</md-button>
+                    <md-button class="md-primary md-raised" type="submit">Save Settings</md-button>
+                </div>        
+            </div>
+        </form>
+    </md-content>
+</div>

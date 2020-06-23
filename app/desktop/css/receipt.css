@@ -1,0 +1,42 @@
+body { background: white; }
+h1,h2,h3 { text-align:  center; }
+
+.bottleanddescription { width: 100%; border-bottom: 1px solid #d4d4d4; padding: 10px 0; position: relative; min-height:250px;  }
+
+.bottleanddescription::after {
+    display: table; content: " "; clear: both;
+}
+
+.bottleanddescription p { font-size: 0.95em; }
+.bottleanddescription .totalamounts { font-size: 1.55em; }
+.bottleanddescription .cs span { display: block; white-space:  nowrap; }
+.bottleanddescription  .descriptioncontain { padding-top: 10px; }
+.bottleanddescription  .descriptioncontain .description { font-size: 1.3em; }
+
+
+div.bottlewrap { width: 45%; float: left; position: absolute;top: 50%; transform: translateY(-50%);  text-align: center;}
+.descriptioncontain.ib  { width: 50%; float: right; margin: 0;}
+.imagebox { max-height: 250px; }
+
+div#subtotal { width: 100%; margin: 0; }
+
+div#subtotal td:last-child { text-align:  right; }
+
+#subtotal table { width: 100%; }
+#subtotal p { margin: 5px 0; }
+#address { border: 1px solid #d4d4d4;  }
+
+#shipping { border: 0; border-bottom: 1px solid #d4d4d4; }
+#shipping, #billing { float: none; width: 94%; padding: 0 3%; }
+#receipt { border: 1px solid #d4d4d4; padding: 0 2%; margin-top: 25px; }
+#insureship-legal { font-size: 12px; }
+
+@media only screen and (min-width: 1028px) {
+    div#subtotal { width: 400px; float: right; }
+    
+    #address { width: 35%; float: left; }
+    #receipt { width: 60%; float: right; margin: 0; }
+    .bottleanddescription .cs span { display: inline;  }
+    
+    #insureship-legal img { float: left; width: 250px; margin-right: 20px; }
+}

@@ -1,0 +1,131 @@
+<div ng-controller="CustomInputMask" layout="row" layout-align="center" class="wrap-top-gap">
+    <md-content class="f1f1f1" flex>
+        <form name="InputMaskForm" ng-submit="saveExtension()" novalidate>
+            <div md-whiteframe="3" layout-padding layout-margin  style="background: white">
+                <div class="row-form-panel">
+                    <div class="col-wrapper">
+                        <p class="md-title" layout-padding style="margin-bottom: 0px;">Custom Input Mask</p>
+                    </div>
+                </div>
+
+                <div class="row-form-panel" style="display: block;">
+                    <div flex="100" layout="column" flex="nogrow">
+                        <div class="col-wrapper">
+                            <md-switch class="right-shift" ng-model="extension.enable_masking">
+                                <h2 class="mat-h2 md-title">
+                                    Enable Custom Masking
+                                </h2>
+                            </md-switch>
+                        </div>
+                    </div>
+                    <div class="row-form-panel" ng-if="extension.enable_masking">
+                        <div layout="row">
+                            <md-input-container flex="50">
+                                <div class="col-wrapper">
+                                    <label for="allow_device" >Select Allowed Devices <span class='required_field'>*</span></label>
+                                    <md-select name="allow_device" ng-model="extension.masking_device" ng-change="" multiple required>
+                                        <md-option ng-repeat="data in devices" value="{{ data }}">{{ data | uppercase }}</md-option>
+                                    </md-select>
+                                </div>                            
+                            </md-input-container>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row-form-panel" style="display: block;">
+                    <div flex="100" layout="column" flex="nogrow">
+                        <div class="col-wrapper">
+                            <md-switch class="right-shift" ng-model="extension.credit_card_place_holder_active">
+                                <h2 class="mat-h2 md-title">
+                                    Turn On Credit Card Placeholder
+                                </h2>
+                            </md-switch>
+                        </div>
+                    </div>
+                    <div class="row-form-panel" ng-if="extension.credit_card_place_holder_active">
+                        <div layout="row">
+                            <md-input-container flex="50">
+                                <div class="col-wrapper">
+                                    <label for="card_masking" >Credit Card Masking Placeholder <span class='required_field'>*</span></label>
+                                    <md-select name="card_masking" ng-model="extension.credit_card_masking_placeholder" ng-change="" required>
+                                        <md-option ng-repeat="data in placeholder" value="{{ data }}">{{ data | uppercase }}</md-option>
+                                    </md-select>
+                                </div>                            
+                            </md-input-container>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row-form-panel" style="display: block;" ng-if="!extension.credit_card_place_holder_active">
+                    <div flex="100" layout="column" flex="nogrow">
+                        <div class="col-wrapper">
+                            <md-switch class="right-shift" ng-model="extension.enable_credit_Card_masking">
+                                <h2 class="mat-h2 md-title">
+                                    Turn On Credit Card Masking
+                                </h2>
+                            </md-switch>
+                        </div>
+                    </div>
+                    <div class="row-form-panel" ng-if="extension.enable_credit_Card_masking">
+                        <div layout="row">
+                            <md-input-container flex="50">
+                                <div class="col-wrapper">
+                                    <label for="card_masking_type" >Credit Card Masking Type <span class='required_field'>*</span></label>
+                                    <md-select name="card_masking_type" ng-model="extension.credit_card_masking" ng-change="" required>
+                                        <md-option ng-repeat="data in MaskingTypes" value="{{ data }}">{{ data | uppercase | underscoreless }}</md-option>
+                                    </md-select>
+                                </div>                            
+                            </md-input-container>
+                        </div>
+                        <div layout="row">
+                        <div flex="100" layout="column" flex="nogrow">
+                            <div class="col-wrapper">
+                                <md-switch class="right-shift" ng-model="extension.enable_standardamex">
+                                    <h2 class="mat-h2 md-title">
+                                        Disable generic card masking pattern for AMEX
+                                        <span class="test-tooltip" aria-label="Refresh">
+                                            <md-tooltip md-direction="right">This will enable the standard amex card masking (xxxx-xxxxxx-xxxxx) in checkout
+                                            </md-tooltip>
+                                            <i class="material-icons">help_outline</i>
+                                        </span>
+                                    </h2>
+                                </md-switch>
+                            </div>
+                        </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row-form-panel" style="display: block;">
+                    <div flex="100" layout="column" flex="nogrow">
+                        <div class="col-wrapper">
+                            <h2 class="mat-h2 md-title">
+                                Enable Phone Number Masking
+                            </h2>
+
+                        </div>
+                    </div>
+                    <div class="row-form-panel">
+                        <div layout="row">
+                            <md-input-container flex="50">
+                                <div class="col-wrapper">
+                                    <label for="phone_number" >Phone Number</label>
+                                    <input type="text" name="phone_number" ng-model="extension.phone_number_masking" placeholder="00000000000">
+                                </div>                            
+                            </md-input-container>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="top-gap-25 layout-margin">
+                <div layout="row" layout-align="end">
+                    <md-button  type="button" class="md-raised" ng-href="#/extensions">Cancel</md-button>
+                    <md-button class="md-primary md-raised" ng-disabled="InputMaskForm.$submitted || InputMaskForm.$invalid" type="submit">Save Settings</md-button>
+                </div>        
+            </div>
+        </form>
+    </md-content>
+</div>

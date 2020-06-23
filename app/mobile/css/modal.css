@@ -1,0 +1,343 @@
+.modal {
+  display: none;
+}
+
+.vanilla-modal .modal {
+  display: block;
+  position: fixed;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.2s, z-index 0s 0.2s;
+  text-align: center;
+  overflow: hidden;
+  overflow-y: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+    font-size: 18px;
+}
+
+.vanilla-modal .modal > * {
+  display: inline-block;
+  white-space: normal;
+  vertical-align: middle;
+  text-align: left;
+}
+
+.vanilla-modal .modal:before {
+  display: inline-block;
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  vertical-align: middle;
+  content: "";
+}
+
+.vanilla-modal.modal-visible .modal {
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+.modal-inner {
+  position: relative;
+  overflow: hidden;
+  max-width: 90%;
+  max-height: 90%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: #fff;
+  z-index: -1;
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 0.2s, transform 0.2s, z-index 0s 0.2s;
+  padding: 20px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 10px;
+}
+.modal-visible .modal-inner {
+  z-index: 100;
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+div.modal-inner.soft-modal-inner a {
+   float:right;
+  z-index: 2;
+
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 25px;
+  cursor: pointer;
+  text-align: center;
+  background: #666;
+    color: #fff;
+  box-shadow: -1px 1px 2px rgba(0,0,0,0.2);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.modal .field-group {
+    margin: 15px 0 10px;
+}
+.modal label {
+    display: block;
+    font: bold 9pt sans-serif;
+    padding-left: 5px;
+    margin: 5px 0;
+/*
+    width: 150px;
+    text-align: right;
+*/
+}
+.modal fieldset {
+    border-width: 0;
+    width: 375px;
+    margin: 0 auto;
+}
+.modal legend {
+    font: bold 14pt sans-serif;
+}
+.modal input[type="text"], .modal input[type="tel"], .modal input[type="email"], .modal select {
+    border-radius: 3px;
+    border: 1px solid #aaa;
+    height: 26px;
+    width: 100%;
+    font: normal 10pt sans-serif;
+}
+.modal input[type="text"]{
+    text-indent: 10px;
+}
+.modal input[type="tel"]{
+    text-indent: 10px;
+}
+.modal input[type="email"]{
+    text-indent: 10px;
+}
+.modal select{
+    height: 29px;
+    text-transform: capitalize;
+}
+.modal input[type="image"] {
+    display: block;
+    margin: auto;
+}
+.modal input.shortinput[type="tel"] {
+    width: 40%;
+}
+.modal .inlineinput {
+    display: inline-block;
+}
+.modal h3 {
+    text-align: left;
+    color: #f00;
+}
+.modal p#crmError {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    padding: 15px;
+    margin: 0 50px 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.modal #retryCheckoutBtn {
+    margin: auto;
+    display: block;
+    width: 373px;
+    height: 74px;
+}
+
+.footer{
+    font: 12pt bold Arial,Helvetica,sans-serif;
+    text-align: center;
+    margin: 50px auto;
+    color: #666;
+}
+
+.footer p {
+    display: inline-block;
+    margin-left: 0;
+}
+
+.footer .footerlinks { display: block; }
+
+.footer a {
+    color: #666;
+    text-decoration: none;
+}
+#we-accept {
+    text-align: center;
+}
+
+
+.retryCnt .field-group {
+    margin: 15px 0 10px;
+}
+.retryCnt label {
+    text-align: left;
+    display: block;
+    font: bold 9pt sans-serif;
+    padding-left: 5px;
+    margin: 5px 0;
+/*
+    width: 150px;
+    text-align: right;
+*/
+}
+.retryCnt fieldset {
+    border-width: 0;
+    width: 375px;
+    margin: 0 auto;
+}
+.retryCnt legend {
+    font: bold 14pt sans-serif;
+}
+.retryCnt input[type="text"], .retryCnt input[type="tel"], .retryCnt input[type="email"], .retryCnt select {
+    border-radius: 3px;
+    border: 1px solid #aaa;
+    height: 26px;
+    width: 100%;
+    font: normal 10pt sans-serif;
+}
+.retryCnt input[type="text"]{
+    text-indent: 10px;
+}
+.retryCnt input[type="tel"]{
+    text-indent: 10px;
+}
+.retryCnt input[type="email"]{
+    text-indent: 10px;
+}
+.retryCnt select{
+    height: 29px;
+    text-transform: capitalize;
+}
+.retryCnt input[type="image"] {
+    display: block;
+    margin: auto;
+}
+.retryCnt input.shortinput[type="tel"] {
+    width: 40%;
+}
+.retryCnt .inlineinput {
+    display: inline-block;
+}
+.retryCnt h3 {
+    text-align: center;
+    color: #f00;
+    padding: 0;
+    margin: 10px 0;
+}
+.retryCnt p {
+    margin: 10px 0;
+}
+.retryCnt {
+text-align: center;
+padding: 20px 0 30px;
+}
+.retryCnt p#crmError {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    padding: 15px;
+    margin: 0 30px 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.retryCnt #retryCheckoutBtn {
+    margin: auto;
+    display: block;
+    width: 373px;
+    height: 74px;
+}
+.retryCnt #editShippingBtn {
+    display: block;
+    margin: 10px auto 20px;
+    padding: 10px;
+    font: bold 12pt sans-serif;
+}
+.modal-content {
+    font-family: sans-serif !important;
+}
+
+.modal .br {
+    height: 5px !important;
+    display: block !important;
+}
+
+.modal h1.modal-header {
+    all: initial !important;
+    text-transform: uppercase !important;
+    margin-bottom: 15px !important;
+    font-weight: bold !important;
+    font-size: 18px !important;
+    display: block !important;
+    font-family: sans-serif !important;
+}
+
+.modal h2 {    
+    all: initial !important;    
+    font-size: 14px !important;
+    margin: 15px 0 5px !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+    display: block !important;
+    font-family: sans-serif !important;
+    text-decoration: underline !important;
+}
+
+.modal p,.modal p strong, .modal a {
+    all: initial !important; 
+    font-size: 14px !important;
+    font-family: sans-serif !important;
+    line-height: 1.5em !important;
+    color: initial !important;
+}
+
+.modal p { display: block !important; margin: 1em 0 !important; }
+
+div.modal div.modal-inner a[data-modal-close] {
+   float:right !important;
+   z-index: 2;
+   position: absolute !important;
+   right: 20px !important;
+   top: 20px !important;
+   width: 30px !important;
+   height: 30px !important;
+   line-height: 30px !important;
+   font-size: 20px !important;
+   cursor: pointer !important;
+   text-align: center !important;
+   background: #666 !important;
+   color: #fff !important;
+   /*box-shadow: -1px 1px 2px rgba(0,0,0,0.2) !important;*/
+   -webkit-border-radius: 5px !important;
+   -moz-border-radius: 5px !important;
+   border-radius: 5px !important;
+}
+
+.modal p strong {
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+}
+
+.vmodal-custom-content {    
+    padding: 25px 50px 25px 25px;
+}
+
+.toTop { cursor: pointer; }
+

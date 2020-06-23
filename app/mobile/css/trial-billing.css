@@ -1,0 +1,100 @@
+div.bottle {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position:relative;
+    display: inline-block;
+    width:100%;
+    height:260px;
+    margin-top: 20px;
+}
+
+.product ul li { border-top: 1px solid #d4d4d4; padding: 8px 0; }
+
+.product ul li span { float: right; text-align: right; }
+
+
+.product ul li span strike{
+    color: red;
+}
+
+ul {list-style:none; padding:0;}
+
+.progress .part { 
+    float:left; 
+    width:33.3%;
+    text-align: center;
+    position: relative;
+    padding-top: 15px;
+
+}
+.progress .part div:first-child {
+    font-size: 12px; 
+}
+.progress .part div:last-child {
+    border:3px solid #d4d4d4;
+    border-radius: 100%;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    display:inline-block;
+    color:white;
+    margin-top:10px;
+}
+
+.progress .part.grey div:last-child {
+    background: #ddd !important;
+}
+
+
+
+.disclaimer {
+    color: #999999;
+    font-size: 10px;
+    line-height: 16px;
+    padding: 25px 20px;
+}
+.product { border-top: 1px solid #d4d4d4; border-bottom: 1px solid #d4d4d4; padding: 0 10px; margin: 0 10px; }
+.progress { position: relative; padding: 10px 10px;}
+
+.progress .bar {     
+    height: 5px;
+    width: 34%;
+    border-right: 120px solid #ddd;
+    position: absolute;
+    top: 65px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.big-arrow { display: none; font-weight: bold; letter-spacing: -1px; margin-top: 25px; padding: 10px ; position: relative; width: 85%; text-align: right;  color: white; font-size: 16px; }
+.big-arrow div { font-size: 14px; letter-spacing: 0px;}
+.big-arrow::after { content: " "; display: block; width: 0; height: 0; border: 31px solid transparent; position: absolute; top: 0; left: 100%; }
+
+.nowrap { white-space: nowrap; }
+.text { margin: 0 20px;   border-top: 1px solid #d4d4d4; }
+
+.product-option-box { background: white; }
+
+#esicon, #escopy { display: inline-block; width: 48%; vertical-align: middle; }
+#eshipwrap p { font-size: 11px; }
+
+@media only screen and (min-width: 1028px) {
+    .progress .bar {     
+        border-right: 200px solid #ddd;
+        top: 70px;
+    }
+    .progress .part div:first-child {
+        font-size: 16px; 
+    }
+
+    
+    .big-arrow { display: block; font-size: 30px; width: 90%; }
+    .big-arrow::after { border: 40px solid transparent; }
+    .product .left { float: left; width: 33%; margin-top: 10px; }
+    .product .right { float: right; width: 63%; padding: 0 2%; }
+    .product { border: 0; }
+    .text {  border-bottom: 1px solid #d4d4d4; }
+}
+                

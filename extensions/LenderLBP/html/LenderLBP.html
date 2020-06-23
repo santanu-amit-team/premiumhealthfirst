@@ -1,0 +1,202 @@
+<div layout="row" layout-align="center" class="wrap-top-gap" ng-controller="LenderLBP">
+    <md-content class="f1f1f1" flex>
+        <form name="LenderLBPForm" ng-submit="saveExtension()"  novalidate>
+            <div md-whiteframe="3" layout-padding layout-margin  style="background: white">
+                <div class="row-form-panel">
+                    <div class="col-wrapper">
+                        <h2 class="md-title" layout-padding style="margin-bottom: 0;">Lender LBP</h2>
+                    </div>
+                </div>
+                <div class="row-form-panel">
+                    <div flex="100" layout="column" flex="nogrow">
+                        <div class="col-wrapper">
+                            <md-switch class="right-shift" ng-model="extension.enable_new_instance">
+                                    <h2 class="mat-h2 md-title">
+                                        Enable New Instance For Trial Completion
+                                        <span class="test-tooltip" aria-label="Refresh">
+                                            <md-tooltip md-direction="right">This will enable the new instance for trial completion
+                                            </md-tooltip>
+                                            <i class="material-icons">help_outline</i>
+                                        </span>
+                                    </h2>
+                            </md-switch>
+                        </div>
+                    </div>
+                 </div>
+                <div class="row-form-panel">
+                    <div flex="100" layout="column" flex="nogrow">
+                        <div class="col-wrapper">
+                            <md-switch class="right-shift" ng-model="extension.local_lbp_enabled">
+                                    <h2 class="mat-h2 md-title">
+                                        Activate Local Lender LBP
+                                    </h2>
+                            </md-switch>
+                        </div>
+                    </div>
+                    <div layout="row" class="row-form-panel" ng-if="extension.local_lbp_enabled">
+                        <md-input-container flex="50">
+                            <div class="col-wrapper">
+                                <label for="step_id">Enter Steps For Local LBP <span class='required_field'>*</span> </label>
+                                <input type="text" name="step_id" ng-model="extension.local_lbp_steps" required>
+                            </div>
+                        </md-input-container>
+                        <md-input-container flex="50">
+                            <div class="col-wrapper">
+                                <label for="step_id">Enter Local LBP Data Path <span class='required_field'>*</span> </label>
+                                <input type="text" name="step_id" ng-model="extension.local_lbp_data_path" required>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </div>
+                <div class="row-form-panel">
+                    <div flex="100" layout="column" flex="nogrow">
+                        <div class="col-wrapper">
+                            <md-switch class="right-shift" ng-model="extension.remote_lbp_enabled">
+                                    <h2 class="mat-h2 md-title">
+                                        Activate Remote Lender LBP
+                                    </h2>
+                            </md-switch>
+                        </div>
+                    </div>
+                    <div layout="row" class="row-form-panel new-edit-row" ng-if="extension.remote_lbp_enabled">
+                        <md-input-container flex="50">
+                            <div class="col-wrapper">
+                                <label for="step_id">Enter Steps For Remote LBP <span class='required_field'>*</span> </label>
+                                <textarea name="step_id" ng-model="extension.remote_lbp_steps"></textarea>
+                            </div>
+                        </md-input-container>
+                       <md-input-container flex="50">
+                            <div class="col-wrapper">
+                                <label for="step_id">Remote LBP Category <span class='required_field'>*</span> </label>
+                                <md-select name="crm" ng-model="extension.remote_lbp_category" required ng-change="">
+                                    <md-option ng-repeat="data in LBPCategory" value="{{ data }}">{{ data | uppercase }}</md-option>
+                                </md-select>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </div>
+                <div class="row-form-panel">
+                    <div flex="100" layout="column" flex="nogrow">
+                        <div class="col-wrapper">
+                            <md-switch class="right-shift" ng-model="extension.split_enabled">
+                                    <h2 class="mat-h2 md-title">
+                                        Activate Split Logic
+                                    </h2>
+                            </md-switch>
+                        </div>
+                    </div>
+                    <div layout="row" class="row-form-panel" ng-if="extension.split_enabled" layout-wrap="">
+                        <md-input-container flex="50">
+                            <div class="col-wrapper">
+                                <label for="step_id">Enter Steps For Split <span class='required_field'>*</span> </label>
+                                <input type="text" name="step_id" ng-model="extension.split_steps" required>
+                            </div>
+                        </md-input-container>
+                        <md-input-container flex="50">
+                            <div class="col-wrapper">
+                                <label for="step_id">Gateways Select Type For Split Logic <span class='required_field'>*</span> </label>
+                                <md-select name="crm" ng-model="extension.gateway_select_type" required ng-change="">
+                                    <md-option ng-repeat="data in gatewayType" value="{{ data }}">{{ data | uppercase }}</md-option>
+                                </md-select>
+                            </div>
+                        </md-input-container>
+                        <md-input-container flex="50" style="margin-top: 20px;">
+                            <div class="col-wrapper">
+                                <label for="step_id">Main Step Gateways For Split Logic<span class='required_field'>*</span> </label>
+                                <input type="text" name="step_id" ng-model="extension.split_local_gateways" required>
+                            </div>
+                        </md-input-container>
+                        <md-input-container flex="50" style="margin-top: 20px;">
+                            <div class="col-wrapper">
+                                <label for="step_id">File Path For Split Logic <span class='required_field'>*</span> </label>
+                                <input type="text" name="step_id" ng-model="extension.split_local_file_path" required>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    
+                </div>
+                <div class="row-form-panel">
+                
+                    <div flex="100" layout="column" flex="nogrow" style="margin-bottom: 20px" >
+                        <div class="col-wrapper">
+                            <md-switch class="right-shift" ng-model="extension.trail_completion_enabled">
+                                    <h2 class="mat-h2 md-title">
+                                        Activate Trial Completion
+                                    </h2>
+                            </md-switch>
+                        </div>
+                    </div>
+                    <div layout="row" class="md-toolbar-tools" ng-repeat="custom_trail_compeltion in extension.trail_compeltion track by $index" ng-if="extension.trail_completion_enabled">
+                    <div ng-if="$index == 0"  flex="100" class="loop-colum" layout-alignment="stretch" style="display: flex; align-items: stretch;">
+
+                        <md-input-container flex ng-init="extension.trail_compeltion[$index]['step'] = (!(extension.trail_compeltion[$index]['step']).length) ? productIDList[0] : extension.trail_compeltion[$index]['step']">
+                            <div class="col-wrapper">
+                                <label for="step">Trial Completion Product ID</label>
+                                <input type="text" name="step" ng-model="extension.trail_compeltion[$index]['step']" required>
+                            </div>
+                        </md-input-container>
+                        <md-input-container flex="" class="add-colum-panel placeholder-label">
+                            <div class="col-wrapper">
+                                <label for="Label" style="margin-bottom: 5px;">Trial Completion Label</label>
+                                <input  type="text" name="Label" ng-model="extension.trail_compeltion[$index]['label']"  aria-label="Add input" required>
+
+                                <div class="select-plus">
+                                    <md-button class="md-icon-button md-primary" ng-if="(extension.trail_compeltion.length) == 1" ng-click="addMethod()">
+                                        <i class="material-icons">add</i>
+                                    </md-button>
+                                </div>
+
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div ng-if="$index != 0" flex="100" class="loop-colum" layout-alignment="stretch" style="display: flex; align-items: stretch;">
+                        <md-input-container flex ng-init="extension.trail_compeltion[$index]['step'] = (!(extension.trail_compeltion[$index]['step']).length) ? productIDList[0] : extension.trail_compeltion[$index]['step']">
+                            <div class="col-wrapper">
+                                <input type="text" name="step" ng-model="extension.trail_compeltion[$index]['step']" required>
+                            </div>
+                        </md-input-container>
+                        <md-input-container flex="" class="add-colum-panel placeholder-label">
+
+                            <div class="col-wrapper">
+                                <input ng-blur="edit($index)" type="text" name="label" ng-model="extension.trail_compeltion[$index]['label']"  aria-label="Add input" required>
+
+                                <div class="select-plus">
+                                    <md-button class="md-icon-button md-primary" ng-class="{'right-30': (extension.trail_compeltion.length - 1) == $index}" aria-label="Add" ng-click="remove($index);">
+                                        <i class="material-icons">remove</i>
+                                    </md-button>
+                                    <md-button class="md-icon-button md-primary" ng-if="(extension.trail_compeltion.length - 1) == $index" ng-click="addMethod()">
+                                        <i class="material-icons">add</i>
+                                    </md-button>
+                                </div>
+
+                            </div>
+                        </md-input-container>
+                    </div>
+                </div>
+                </div>
+                <div class="row-form-panel" ng-if="extension.trail_completion_enabled">
+                    <div flex="100" layout="column" flex="nogrow">
+                        <div class="col-wrapper">
+                            <md-switch class="right-shift" ng-model="extension.unlink_trial_data">
+                                    <h2 class="mat-h2 md-title">
+                                        Disable Upsell Linking (For Konnektive)
+                                        <span class="test-tooltip" aria-label="Refresh">
+                                            <md-tooltip md-direction="right">If enabled upsell's will be shown separately for import upsale method in 3rd party platform
+                                            </md-tooltip>
+                                            <i class="material-icons">help_outline</i>
+                                        </span>
+                                    </h2>
+                            </md-switch>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+            <div class="top-gap-25 layout-margin">
+                <div layout="row" layout-align="end">
+                    <md-button  type="submit" class="md-raised" ng-href="#/extensions">Cancel</md-button>
+                    <md-button class="md-primary md-raised" ng-disabled="LenderLBPForm.$submitted || LenderLBPForm.$invalid"  type="submit" >Save Settings</md-button>
+                </div>        
+            </div>
+        </form>
+    </md-content>
+</div>

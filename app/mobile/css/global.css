@@ -1,0 +1,90 @@
+* { font-family: 'Open Sans', san-serif; }
+
+body { margin: 0;  background: url('../images/background.jpg') repeat-x;}
+body.dark-bg { background: #000 url('../images/dark-background.jpg') top center no-repeat; }
+body.dark-bg footer, body.dark-bg footer a { color: #ccc; }
+
+
+.container { padding: 0 10px; }
+.clear { clear: both; float: none; }
+.clearfix::after { display: table; content: " "; clear: both; }
+.center { text-align:  center; }
+.red { color: red; }
+
+img {  max-width: 100%; }
+header { padding: 20px 0 0;}
+footer { margin-top: 50px; }
+
+footer p { text-align:  center; font-size: 13px; color: #888; }
+
+.secure-256 { font-size: 10px;}
+.secure-256 img {  vertical-align:  middle; }
+.seals {
+    text-align: center;
+}
+
+.soldout-risk .bar { display: inline-block; vertical-align: middle; border: 1px solid #aaa; padding: 2px; width: 75px; }
+.soldout-risk .bar .level { background: red; width: 12px; height: 12px; animation-name: blink; animation-duration: 2s; animation-iteration-count: infinite;  }
+
+@keyframes blink {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+} 
+
+.logo {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 200px;
+    height: 65px;
+    margin: 0 auto 15px auto;
+}
+
+button.submit {
+    font-size: 20px;
+    padding: 15px 45px;
+    background: #ffa425;
+    color: white;
+    border: 0;
+    position: relative;
+    cursor: pointer;
+}
+
+button.submit:hover {
+    filter: brightness(115%);
+}
+
+button.submit::before {
+    display: inline-block;
+    width: 98%;
+    content: " ";
+    position: absolute;
+    opacity: .3;
+    background: white;
+    height: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 2px;
+}
+
+.pulse{
+    animation-name: pulse;
+    animation-duration: 1.5s;   
+    animation-iteration-count: infinite;
+}
+
+
+@keyframes pulse {
+    0% { transform: scale(0.9); }
+    50% { transform: scale(1); }   
+    100% { transform: scale(0.9);}           
+}
+
+@media only screen and (min-width: 1028px) {
+    
+    header { min-height: 120px; position: relative; }
+    
+    .logo { float: left;position: absolute;top: 50%; transform: translateY(-50%); margin: 0; }  
+    button.submit {font-size: 25px;}
+    .container { padding: 0; width: 1028px; margin: 0 auto; }
+}

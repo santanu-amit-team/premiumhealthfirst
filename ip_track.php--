@@ -1,0 +1,202 @@
+<?php
+
+
+
+require_once 'library' . DIRECTORY_SEPARATOR . 'bootstrap.php';
+
+Bootstrap::initialize('static');
+
+
+
+use Application\Config; /* FETCH ADMIN PRODUCT DETAILS */
+
+use Application\Session; /* FETCH CUSTOMER DETAILS */
+
+
+
+$campaignDetails = Config::campaigns();
+
+
+
+// echo '<pre>';print_r($campaignDetails);
+
+
+if($_REQUEST['lead_type']!='test')
+{
+
+$ip_list = array(
+                  '198.245.109.134',
+                  '103.250.86.42',
+                  '185.245.86.43'
+              );
+
+if (in_array($_SERVER['HTTP_CF_CONNECTING_IP'], $ip_list) || in_array($_SERVER['HTTP_CF_CONNECTING_IP'], $ip_list) || in_array($_SERVER['HTTP_CF_CONNECTING_IP'], $ip_list))
+{
+  // echo 'hmm';
+}
+else
+{
+  // echo 'na';
+
+
+
+
+
+$campaign_list = '';
+
+foreach ($campaignDetails as $key => $value) {
+
+	// echo $value['campaign_id'];
+
+	// echo '<br>';
+
+
+
+	$campaign_list .= ','.$value['campaign_id'];
+
+}
+
+
+
+
+
+
+
+if (!empty($_SERVER['HTTP_CF_CONNECTING_IP'])) {
+
+	$ip = $_SERVER['HTTP_CF_CONNECTING_IP'];
+
+} elseif (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+
+    $ip = $_SERVER['HTTP_CLIENT_IP'];
+
+} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+
+	$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+
+}else{
+  $ip = $_SERVER['REMOTE_ADDR'];
+}
+
+// if($_REQUEST['dev']=='on'){
+  
+//   $ip = '202.142.71.209';
+// }
+
+date_default_timezone_set('EST');
+$today = date('m/d/Y');
+
+
+
+
+
+$data = array( 
+
+  'start_date' => '10/05/2018',
+  'end_date' => $today,
+  "start_time" => "00:00:00",
+  "end_time" => date('H:i:s', strtotime('+30 minutes')),
+
+  'campaign_id' => trim($campaign_list, ','),
+
+  'criteria'=> array(
+
+  		"ip_address"=>$ip
+
+  )
+
+
+
+);
+
+$curl = curl_init();
+
+
+
+curl_setopt_array($curl, array(
+
+  CURLOPT_URL => "https://quattro.limelightcrm.com/api/v1/order_find",
+
+  CURLOPT_USERPWD => 'trafficapi:KgFtKhUDCAtj87',
+
+  CURLOPT_RETURNTRANSFER => true,
+
+  CURLOPT_ENCODING => "",
+
+  CURLOPT_MAXREDIRS => 10,
+
+  CURLOPT_TIMEOUT => 0,
+
+  CURLOPT_FOLLOWLOCATION => false,
+
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+
+  CURLOPT_CUSTOMREQUEST => "POST",
+
+  CURLOPT_POSTFIELDS =>json_encode($data),
+
+  CURLOPT_HTTPHEADER => array(
+
+    "Content-Type: application/json"
+
+  ),
+
+));
+
+
+
+$response = curl_exec($curl);
+
+$err = curl_error($curl);
+
+
+
+curl_close($curl);
+
+
+
+if ($err) {
+
+  // echo "cURL Error #:" . $err;
+
+  // echo 'fail';
+
+  	// return false;
+
+} else {
+
+  // echo $response;
+
+
+
+$result = json_decode($response);
+
+// if($_REQUEST['dev']=='on'){
+//   echo "<pre>";
+//   print_r($data);
+//   print_r($result);
+//   echo "<pre>";
+//   die('-------OK-------');
+// }
+
+if($result->response_code=='100' && $result->total_orders > 0)
+
+  {
+
+
+
+	header('Location: http://www.google.com/');
+
+  }
+
+
+
+
+
+}
+
+}
+
+}
+
+?>

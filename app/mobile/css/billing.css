@@ -1,0 +1,28 @@
+.form-box {   margin-top: 25px;  padding-bottom: 25px; }
+.form-box .inner {  }
+
+.form-box { background: #fff;  }
+
+.final-step {  padding: 10px 20px; color: white; text-align: center; position: relative; margin-bottom: 15px; }
+.final-step strong { display: block; font-size: 55px; }
+.final-step::after { display: block; content:" "; width: 0; top: 100%; left: 43%; position: absolute; height: 0; border-left: 25px solid transparent; border-right: 25px solid transparent;  }
+
+
+.product-option-box {}
+
+.guarantee {
+    width: 266px;
+    height: 104px;
+    margin: 0 auto;
+    padding: 135px 25px 0 25px;
+    font-size: 13px;
+    background: url('../images/moneyback.jpg') no-repeat;
+}
+        
+@media only screen and (min-width: 1028px) {
+    .seals { float: right; display: block; margin-right: 15px; }
+    .product-option-box { float: left; width: 62%; }
+    .form-box { float: right; width: 36%; margin: 0; }
+    
+    #order-summary th { width: 60%; }
+}

@@ -1,0 +1,465 @@
+<!-- Form -->
+<div layout="row" layout-align="center" class="wrap-top-gap" ng-controller="traffircLoadbalancer">
+    <md-content class="f1f1f1" flex>
+        <form name="loadbalacerForm" ng-submit="saveExtension()" novalidate>
+            <div md-whiteframe="3" layout-padding layout-margin  style="background: white">
+                <div class="row-form-panel">
+                    <div layout="row">
+                        <div flex="100" layout="column" flex="nogrow">
+                            <div class="col-wrapper">
+                                <md-switch class="right-shift" ng-change="setDefaultConfigStatus();" ng-model="extension.enable_default_settings"><h2 class="mat-h2">Default Configuration</h2></md-switch>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row-form-panel" style="border:0" ng-if="extension.enable_default_settings">
+
+                    <div layout="row" class="md-toolbar-tools">
+                        <md-input-container flex="50">
+                            <div class="col-wrapper">
+                                <label for="crm_label" >Select Engine</label>
+                                <md-select name="app_timezone" ng-model="extension.default_settings.scrapping_method" >
+                                    <md-option ng-repeat="eng in engine" value="{{eng}}">{{eng| uppercase}}</md-option>
+                                </md-select>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div layout="row" class="md-toolbar-tools">
+                        <md-input-container flex="50">
+                            <div class="col-wrapper">
+                                <label for="crm_type">Select Step</label>
+                                <md-select name="crm_type" ng-model="select_steps" >
+                                    <md-option ng-repeat="step in steps" value="{{step}}">{{'Step ' + step}}</md-option>
+                                </md-select>
+                            </div>
+                        </md-input-container>
+                        <md-input-container flex="50" style="margin-top:15px;">
+                            <div class="col-wrapper">
+                                <md-button class="md-primary md-raised" ng-click="addStep(select_steps)">Add Step</md-button>
+                            </div>
+                        </md-input-container>
+                    </div>
+                   
+                    <div layout="row" layout-wrap="" flex="100" style="padding: 0 16px;">
+                         
+                        <div flex="50"  ng-repeat="obj in default_order_filter_percentage track by $index"  class="loop-colum" layout-alignment="stretch" style="display: flex; align-items: stretch;padding-top: 0;margin-top: 10px;">
+
+                            <md-input-container flex="100" class="add-colum-panel" >
+                                <div class="col-wrapper" >
+                                    <label for="endpoint">Order Filter Percentage (Step {{obj}})</label>
+                                    <input type="text" class="purple-cell" name="default_order_filter_step1_percentage"  ng-model="extension.default_settings[existing_dynamic_model[(obj-1)]]">
+                                    <md-button class="md-icon-button " aria-label="More" ng-click="removeSteps($index,obj);" style="top:20px;">
+                                        <i class="material-icons">remove</i>
+                                    </md-button>
+                                </div>
+                            </md-input-container>
+                        </div>
+                        
+                    </div>
+
+                    <div   layout="row" class="md-toolbar-tools" style="font-size: 15px;height: 22px;">
+
+                        <div class="col-wrapper" flex="100">
+                            <md-checkbox ng-model="extension.default_settings.enable_remote" aria-label="Enable remote management">
+                                Enable Remote Management (using Almost20, Mid Router, etc.)
+                            </md-checkbox>
+                        </div>
+                    </div>
+                    <div   layout="row" class="md-toolbar-tools" style="font-size: 15px;height: 22px;">
+
+                        <div class="col-wrapper" flex="100">
+                            <md-checkbox ng-model="extension.default_settings.enable_card_based_from_remote" aria-label="Enable remote management">
+                                Enable Card Based Filter From Remote(using Almost20.)
+                            </md-checkbox>
+                        </div>
+                    </div>
+                    <div   layout="row" class="md-toolbar-tools" style="font-size: 15px;height: 22px;">
+                        <div class="col-wrapper" flex="100">
+                            <md-checkbox ng-model="extension.default_settings.disable_test_order" aria-label="Disable order filter for test order">
+                                Disable Filter for Test Orders
+                            </md-checkbox>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div md-whiteframe="3" layout-padding layout-margin  style="background: white">
+
+
+                <div class="row-form-panel">
+                    <p class="md-title" layout-padding>Order Filter</p>
+                    <div layout="row">
+                        <md-input-container flex="50">
+                            <div class="col-wrapper">
+                                <label for="crm_label" >Select Engine</label>
+                                <md-select name="app_timezone" ng-model="extension.scrapping_method" ng-required="scrapping_method_required">
+                                    <md-option ng-repeat="eng in engine" value="{{eng}}">{{eng| uppercase}}</md-option>
+                                </md-select>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </div>
+                <div class="row-form-panel" >
+
+                    <div layout="row">
+                        <div flex="100" layout="column" flex="nogrow">
+                            <div class="col-wrapper">
+                                <md-switch ng-change="scrappingMethodValidation();" class="right-shift" ng-model="extension.enable_schedule"><h2 class="mat-h2">Enable Schedule</h2></md-switch>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-form-panel " layout="column" ng-if="extension.enable_schedule">
+                        <div class="col-wrapper">
+                            <div layout="row" layout-wrap="" flex="100" >
+                                <div flex="100"  ng-repeat="obj in extension.scheduler track by $index"  class="loop-colum" layout-alignment="stretch" style="display: flex; align-items: stretch;padding-top: 0;">
+                                    <div md-whiteframe="3" layout-padding layout-margin class="o-t-g-20" style="background: white" flex="100">
+                                        <div class="row-form-panel" layout="column">
+                                            <div layout="row" >
+                                                <md-input-container flex>
+                                                    <div class="col-wrapper">
+                                                        <label for="shipping_id" >Start Time (24hr Format)</label>
+                                                        <input type="text"  name="start_time"  ng-model="extension.scheduler[$index].start_time">
+                                                    </div>
+                                                </md-input-container>
+                                                <md-input-container flex>
+                                                    <div class="col-wrapper">
+                                                        <label for="shipping_price" >End Time (24hr format)</label>
+                                                        <input type="text"  name="end_time" ng-model="extension.scheduler[$index].end_time">
+                                                    </div>
+                                                </md-input-container>
+                                            </div>  
+                                        </div>
+                                        <div class="row-form-panel" layout="column" style="border:0">
+                                            <div class="col-wrapper">
+                                            <div layout="row" layout-align="end">
+                                                <md-input-container flex>
+                                                    <button class="md-primary md-button md-ink-ripple remove-btn font-italic" type="button"ng-disabled="true" disabled="disabled">Schedule {{$index + 1}}</button>
+                                                </md-input-container>
+                                                <button  ng-click="remove($index, 'scheduler');" ng-if="$index != 0" class="md-button md-ink-ripple remove-btn" type="button" >Remove<div class="md-ripple-container" style=""></div></button>
+                                                <button ng-click="add('scheduler')"  ng-if="(extension.scheduler.length - 1) == $index" class="md-primary md-hue-1 md-button md-ink-ripple remove-btn" type="button" >Add New<div class="md-ripple-container" style=""></div></button>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row-form-panel" >
+
+                    <div layout="row">
+                        <div flex="100" layout="column" flex="nogrow">
+                            <div class="col-wrapper">
+                                <md-switch ng-change="scrappingMethodValidation();" class="right-shift" ng-model="extension.enable_product_orderfilter"><h2 class="mat-h2">Enable Product Based Order Filter</h2></md-switch>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-form-panel" ng-if="extension.enable_product_orderfilter">
+                        <div class="col-wrapper">
+                            <div layout="row">
+                                <div flex="100" layout="column" flex="nogrow">Product Order Filter Configuration</div>
+                            </div>
+                            <div layout="row" layout-wrap="" flex="100" style="margin-top: 0;">
+                                <div flex="100"  ng-repeat="obj in extension.productFilter track by $index"  class="loop-colum" layout-alignment="stretch" style="display: flex; align-items: stretch;padding-top: 0;">
+                                    <div flex="100" md-whiteframe="3" layout-padding layout-margin class="o-t-g-20" style="background: white">
+                                        <div class="row-form-panel" layout="column">
+                                            <div layout="row">
+                                                <md-input-container flex>
+                                                    <div class="col-wrapper">
+                                                        <label for="shipping_id" >Product ID</label>
+                                                        <input type="text"  name="productID" ng-model="extension.productFilter[$index].productID">
+                                                    </div>
+                                                </md-input-container>
+                                                <md-input-container flex ng-if="extension.scrapping_method == 'random'">
+                                                    <div class="col-wrapper">
+                                                        <label for="shipping_price" >Order Filter Percentage</label>
+                                                        <input type="text"  name="percentage" ng-model="extension.productFilter[$index].percentage">
+                                                    </div>
+                                                </md-input-container>
+                                                <!--   flat logic order filter-->
+                                           
+                                                  <md-input-container flex ng-if="extension.scrapping_method == 'flat'">
+                                                    <div class="col-wrapper">
+                                                        <label for="shipping_price" >Count Interval</label>
+                                                        <input type="text"  name="count_interval" ng-model="extension.productFilter[$index].count_interval">
+                                                    </div>
+                                                </md-input-container>
+                                                  <md-input-container flex ng-if="extension.scrapping_method == 'flat'">
+                                                    <div class="col-wrapper">
+                                                        <label for="shipping_price" >No. Of Order Filter</label>
+                                                        <input type="text"  name="number_of_orderfilter" ng-model="extension.productFilter[$index].number_of_orderfilter">
+                                                    </div>
+                                                </md-input-container>
+                                                  <md-input-container flex ng-if="extension.scrapping_method == 'flat'">
+                                                    <div class="col-wrapper">
+                                                        <label for="shipping_price" >No. Of Non Order Filter</label>
+                                                        <input type="text"  name="number_of_non_orderfilter" ng-model="extension.productFilter[$index].number_of_non_orderfilter">
+                                                    </div>
+                                                </md-input-container>
+                                           
+                                            <!--  end flat logic order filter-->
+                                            </div>  
+                                        </div>
+                                        <div class="row-form-panel" layout="column" style="border:0">
+                                            <div class="col-wrapper">
+                                            <div layout="row" layout-align="end">
+                                                <md-input-container flex>
+                                                    <button class="md-primary md-button md-ink-ripple remove-btn font-italic" type="button"ng-disabled="true" disabled="disabled">Product {{$index + 1}}</button>
+                                                </md-input-container>
+                                                <button ng-click="remove($index, 'productFilter');" ng-if="$index != 0" class="md-button md-ink-ripple remove-btn" type="button" >Remove<div class="md-ripple-container" style=""></div></button>
+                                                <button ng-click="add('productFilter')"  ng-if="(extension.productFilter.length - 1) == $index"  class="md-primary md-hue-1 md-button md-ink-ripple remove-btn" type="button" >Add New<div class="md-ripple-container" style=""></div></button>
+                                            </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-form-panel" >
+
+                    <div layout="row">
+                        <div flex="100" layout="column" flex="nogrow">
+                            <div class="col-wrapper">   <md-switch ng-change="scrappingMethodValidation();" class="right-shift" ng-model="extension.enable_card_scrapper"><h2 class="mat-h2">Enable Card Type Order Filter</h2></md-switch>   </div>
+                        </div>
+                    </div>
+                    <div class="col-wrapper" ng-if="extension.enable_card_scrapper">
+                        <div class="row-form-panel" >
+                            <div layout="row">
+                                <div flex="100" layout="column" flex="nogrow">Filter Configuration</div>
+                            </div>
+                            <div layout="row" layout-wrap="" flex="100" style="margin-top: 0;">
+                                <div flex="100"  ng-repeat="obj in extension.cardFilter track by $index"  class="loop-colum" layout-alignment="stretch" style="display: flex; align-items: stretch;padding-top: 0;">
+                                    <div flex="100" md-whiteframe="3" layout-padding layout-margin class="o-t-g-20" style="background: white">
+                                        <div class="row-form-panel" layout="column">
+                                            <div layout="row">
+                                                <md-input-container flex>
+                                                    <div class="col-wrapper"> 
+                                                        <label for="shipping_id" >Card Type</label>
+                                                        <md-select name="card_type" ng-model="extension.cardFilter[$index].card_type" required>
+                                                            <md-option ng-repeat="card in cards" value="{{card}}">{{card| uppercase}}</md-option>
+                                                        </md-select>
+                                                    </div>
+                                                </md-input-container>
+                                                <md-input-container flex>
+                                                    <div class="col-wrapper"> 
+                                                        <label for="shipping_price" >Order Filter Percentage</label>
+                                                        <input type="text"  name="card_percentage" ng-model="extension.cardFilter[$index].card_percentage">
+                                                    </div>
+                                                </md-input-container>
+                                                <md-input-container flex>
+                                                    <div class="col-wrapper"> 
+                                                        <label for="shipping_id" >Funnel Configuration</label>
+                                                        <md-select name="card_filter_config" ng-model="extension.cardFilter[$index].card_filter_config" >
+                                                            <md-option ng-repeat="config in configurations" value="{{config.id}}">{{config.configuration_label}}</md-option>
+                                                        </md-select>
+                                                    </div>
+                                                </md-input-container>
+                                            </div>  
+                                        </div>
+                                        <div class="row-form-panel" layout="column" style="border:0">
+                                            <div class="col-wrapper">
+                                            <div layout="row" layout-align="end">
+                                                <md-input-container flex>
+                                                    <button class="md-primary md-button md-ink-ripple remove-btn font-italic" type="button"ng-disabled="true" disabled="disabled">Configuration {{$index + 1}}</button>
+                                                </md-input-container>
+                                                <button ng-click="remove($index, 'cardFilter');" ng-if="$index != 0"  class="md-button md-ink-ripple remove-btn" type="button" >Remove<div class="md-ripple-container" style=""></div></button>
+                                                <button ng-click="add('cardFilter')"  ng-if="(extension.cardFilter.length - 1) == $index"  class="md-primary md-hue-1 md-button md-ink-ripple remove-btn" type="button" >Add New<div class="md-ripple-container" style=""></div></button>
+                                            </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-form-panel" >
+
+                    <div layout="row">
+                        <div flex="100" layout="column" flex="nogrow">
+                            <div class="col-wrapper">   <md-switch ng-change="scrappingMethodValidation();" class="right-shift" ng-model="extension.enable_affiliate_orderfilter"><h2 class="mat-h2">Enable Affiliate Based Order Filter</h2></md-switch></div>
+                        </div>
+                    </div>
+                    <div class="col-wrapper" ng-if="extension.enable_affiliate_orderfilter">
+                        <div class="row-form-panel" >
+                            <div layout="row" layout-wrap="" flex="100">
+                                <div flex="100"  ng-repeat="obj in extension.affiliateFilter track by $index"  class="loop-colum" layout-alignment="stretch" style="display: flex; align-items: stretch;padding-top: 0;">
+                                    <div md-whiteframe="3" layout-padding layout-margin class="o-t-g-20" style="background: white">
+                                        <div class="row-form-panel" layout="column">
+                                            <div layout="row">
+
+                                                <md-input-container flex="25">
+                                                    <div class="col-wrapper"> 
+                                                        <label for="shipping_price" >Affiliate</label>
+                                                        <md-select name="affiliate" ng-model="extension.affiliateFilter[$index].affiliate" required>
+                                                            <md-option ng-repeat="affiliate in affiliateList" value="{{affiliate.id}}">{{affiliate.label}}</md-option>
+                                                        </md-select>
+                                                    </div>
+                                                </md-input-container>
+                                                <md-input-container flex="15">
+                                                    <div class="col-wrapper"> 
+                                                        <label for="shipping_price" >Step 1 %</label>
+                                                        <input type="text" ng-model="extension.affiliateFilter[$index].step1" name="step1" required="" ng-keyup="checkStepWisePercentage($index,'step1')" ng-pattern="/^[0-9][0-9]?$|^100$/">
+                                                    </div>
+                                                </md-input-container>
+                                                <md-input-container flex="15">
+                                                    <div class="col-wrapper"> 
+                                                        <label for="shipping_price" >Step 2 %</label>
+                                                        <input type="text" ng-model="extension.affiliateFilter[$index].step2" name="step2" ng-keyup="checkStepWisePercentage($index,'step2')" ng-pattern="/^[0-9][0-9]?$|^100$/">
+                                                    </div>
+                                                </md-input-container>
+                                                <md-input-container flex="15">
+                                                    <div class="col-wrapper"> 
+                                                        <label for="shipping_price" >Step 3 %</label>
+                                                        <input type="text" ng-model="extension.affiliateFilter[$index].step3" name="step3" ng-keyup="checkStepWisePercentage($index,'step3')" ng-pattern="/^[0-9][0-9]?$|^100$/">
+                                                    </div>
+                                                </md-input-container>
+                                                <md-input-container flex="15">
+                                                    <div class="col-wrapper"> 
+                                                        <label for="shipping_price" >Step 4 %</label>
+                                                        <input type="text"  ng-model="extension.affiliateFilter[$index].step4" name="step4" ng-keyup="checkStepWisePercentage($index,'step4')" ng-pattern="/^[0-9][0-9]?$|^100$/">
+                                                    </div>
+                                                </md-input-container>
+                                                <md-input-container flex="15">
+                                                    <div class="col-wrapper"> 
+                                                        <label for="shipping_price" >Step 5 %</label>
+                                                        <input type="text" ng-model="extension.affiliateFilter[$index].step5" name="step5" ng-keyup="checkStepWisePercentage($index,'step5')" ng-pattern="/^[0-9][0-9]?$|^100$/">
+                                                    </div>
+                                                </md-input-container>
+
+                                            </div>  
+                                        </div>
+                                        <div class="row-form-panel" layout="column" style="border:0">
+                                            <div class="col-wrapper">
+                                            <div layout="row" layout-align="end">
+                                                <md-input-container flex>
+                                                    <button class="md-primary md-button md-ink-ripple remove-btn font-italic" type="button"ng-disabled="true" disabled="disabled">Entry {{$index + 1}}</button>
+                                                </md-input-container>
+                                                <button ng-click="remove($index, 'affiliateFilter');" ng-if="$index != 0" class="md-button md-ink-ripple remove-btn" type="button" >Remove<div class="md-ripple-container" style=""></div></button>
+                                                <button ng-click="add('affiliateFilter')"  ng-if="(extension.affiliateFilter.length - 1) == $index" class="md-primary md-hue-1 md-button md-ink-ripple remove-btn" type="button" >Add New<div class="md-ripple-container" style=""></div></button>
+                                            </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--                <div class="row-form-panel">
+                    <div layout="row">
+                        <div flex="100" layout="column" flex="nogrow">
+                            <div class="col-wrapper">
+                                <md-switch class="right-shift" ng-model="extension.enable_affiliate_mapping"><h2 class="mat-h2">Enable Affiliate Mapping</h2></md-switch>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+                 <div class="row-form-panel">
+                    <div layout="row">
+                        <div flex="100" layout="column" flex="nogrow">
+                            <div class="col-wrapper">
+                                <md-switch class="right-shift" ng-model="extension.subaffiliate_post"><h2 class="mat-h2">Enable Sub Affiliate Post </h2></md-switch>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="row-form-panel">
+                    <div layout="row">
+                        <div flex="100" layout="column" flex="nogrow">
+                            <div class="col-wrapper">
+                                <md-switch class="right-shift" ng-model="extension.enable_daily_limit"><h2 class="mat-h2">Daily Limit</h2></md-switch>
+                            </div>
+                        </div>
+                    </div>
+                    <div layout="row" ng-if="extension.enable_daily_limit">
+                                <md-input-container flex="50">
+                                    <div class="col-wrapper">
+                                    <label for="crm_label" >Add Limit</label>
+                                    <input type="text" class="purple-cell" name="disable_orderfilter_count" ng-model="extension.disable_orderfilter_count" aria-label="Show added input" >
+                                    </div>
+                                </md-input-container>
+                    </div>
+                </div>
+                <div class="row-form-panel">
+                    <div layout="row">
+                        <div flex="100" layout="column" flex="nogrow">
+                            <div class="col-wrapper">
+                                <md-switch class="right-shift" ng-model="extension.disable_prepaid_orderfilter"><h2 class="mat-h2">Disable Prepaid Order Filter</h2></md-switch>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row-form-panel" >
+
+                    <div layout="row">
+                        <div flex="100" layout="column" flex="nogrow">
+                            <div class="col-wrapper">   <md-switch class="right-shift" ng-model="extension.enable_affiliate_mapping"><h2 class="mat-h2">Enable Custom Affiliate Mapping</h2></md-switch>   </div>
+                        </div>
+                    </div>
+                    <div class="col-wrapper" ng-if="extension.enable_affiliate_mapping">
+                        <div class="row-form-panel" >
+                            <div layout="row">
+                                <div flex="100" layout="column" flex="nogrow">Affiliate Mapping Configuration</div>
+                            </div>
+                            <div layout="row" layout-wrap="" flex="100" style="margin-top: 0;">
+                                <div flex="100"  ng-repeat="obj in extension.affiliates track by $index"  class="loop-colum" layout-alignment="stretch" style="display: flex; align-items: stretch;padding-top: 0;">
+                                    <div flex="100" md-whiteframe="3" layout-padding layout-margin class="o-t-g-20" style="background: white">
+                                        <div class="row-form-panel" layout="column">
+                                            <div layout="row">
+                                                <md-input-container flex>
+                                                    <div class="col-wrapper"> 
+                                                        <label for="shipping_id" >Affiliate Parameter</label>
+                                                        <md-select name="card_type" ng-model="extension.affiliates[$index].aff_param" required>
+                                                            <md-option ng-repeat="affiliate in affiliatesList" value="{{affiliate}}">{{affiliate| uppercase}}</md-option>
+                                                        </md-select>
+                                                    </div>
+                                                </md-input-container>
+                                                <md-input-container flex>
+                                                    <div class="col-wrapper"> 
+                                                        <label for="shipping_price" >Mapped Parameter</label>
+                                                        <input type="text"  name="card_percentage" ng-model="extension.affiliates[$index].mapped_param">
+                                                    </div>
+                                                </md-input-container>
+                                            </div>  
+                                        </div>
+                                        <div class="row-form-panel" layout="column" style="border:0">
+                                            <div class="col-wrapper">
+                                            <div layout="row" layout-align="end">
+                                                <md-input-container flex>
+                                                    <button class="md-primary md-button md-ink-ripple remove-btn font-italic" type="button"ng-disabled="true" disabled="disabled">Configuration {{$index + 1}}</button>
+                                                </md-input-container>
+                                                <button ng-click="remove($index, 'affiliates');" ng-if="$index != 0"  class="md-button md-ink-ripple remove-btn" type="button" >Remove<div class="md-ripple-container" style=""></div></button>
+                                                <button ng-click="add('affiliates')"  ng-if="(extension.affiliates.length - 1) == $index"  class="md-primary md-hue-1 md-button md-ink-ripple remove-btn" type="button" >Add New<div class="md-ripple-container" style=""></div></button>
+                                            </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="top-gap-25 layout-margin">
+                <div layout="row" layout-align="end">
+                     <md-button  type="submit" class="md-raised" ng-href="#/extensions">Cancel</md-button>
+                    <md-button class="md-primary md-raised" ng-disabled="loadbalacerForm.$submitted || loadbalacerForm.$invalid || validationMethod() === false" type="submit">Save Settings</md-button>
+                </div>        
+            </div>
+        </form>
+    </md-content>
+</div>
+<!-- From -->

@@ -1,0 +1,100 @@
+<div layout-padding layout="row" class="padding-left-0 padding-right-0 wrap-top-gap">
+    <div flex layout-align="start center">
+        <version-list class="padding-left-0" name="dataCapture" scope-obj="dataCapture"></version-list>
+    </div>
+</div>
+<div layout="row" layout-align="center" class="wrap-top-gap">
+    <md-content class="f1f1f1" flex>
+        <form name="datacaptureForm" ng-submit="saveExtension()" novalidate>
+            <div md-whiteframe="3" layout-padding layout-margin  style="background: white" ng-controller="dataCapture">
+                <div class="row-form-panel">
+                    <div class="col-wrapper">
+                        <p class="md-title" layout-padding>Data Capture</p>
+                    </div>
+                    <div class="col-wrapper">
+                        <div layout="row">
+                            <md-input-container flex="50">
+                                <div class="col-wrapper">
+                                    <label for="data_destination">Data Destination <span class='required_field'>*</span></label>
+                                    <md-select name="data_destination" ng-model="extension.data_destination" multiple ng-required="true">
+                            <md-option ng-repeat="destination in data_destinations" value="{{destination}}">{{destination | uppercase}}</md-option>
+                                    </md-select>
+                                </div>
+                            </md-input-container>
+                            <md-input-container flex="50">
+                                <div class="col-wrapper">
+                                    <label for="types">Type<span class='required_field'>*</span></label>
+                                    <md-select name="types" ng-model="extension.data_capture_types"  ng-required="true">
+                                        <md-option ng-repeat="type in types" value="{{type.value}}">{{type.label}}</md-option>
+                                    </md-select>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-form-panel">
+                    <div layout="row">
+                        <div flex="100" layout="column" flex="nogrow">
+                            <div class="col-wrapper">
+                                <md-switch class="right-shift" ng-model="extension.enable_capture_for_decline"><h2 class="mat-h2">Enable Capture For Declined Orders</h2></md-switch>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-form-panel" style="border-top: 0;padding-top: 0;" ng-if="extension.enable_capture_for_decline">
+                    <div class="col-wrapper">
+                        <div class="col-wrapper"><p class="margin-bottom-0"><label for="allowed_card_types">Exclude Decline Reasons</label></p></div>
+                        <div ng-if="loadComplete == true">
+                            <div class="col-wrapper">
+                                <add-remove-input name="settings" scope-obj="extension" scope-update-key="exlude_decline_reasons" empty-msg="Please enter decline message properly" duplicate-msg="Duplicate message not allowed" validation-key="validation" data-separator="{{allowed_decline_msg_separator}}" theme="1" classes="side-wrapper"></add-remove-input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-form-panel">
+                    <div layout="row">
+                        <div flex="100" layout="column" flex="nogrow">
+                            <div class="col-wrapper">
+                                <md-switch class="right-shift" ng-model="extension.capture_sesitive_data"><h2 class="mat-h2">Capture Sensitive Data (Non PCI Compliant)</h2></md-switch>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row-form-panel">
+                    <div layout="row">
+                        <div flex="100" layout="column" flex="nogrow">
+                            <div class="col-wrapper">
+                                <md-switch class="right-shift" ng-model="extension.enable_data_purge"><h2 class="mat-h2">Data Purge</h2></md-switch>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-wrapper" style="margin-top: 20px;" ng-if="extension.enable_data_purge">
+                    <div layout="row">
+                        <md-input-container flex="50">
+                            <div class="col-wrapper">
+                                <label for="maximum_decline_attempts">Clean Cache of Successful Orders (in days)</label>
+                                <input required="" type="text" name="clean_cache_successful_orders" ng-model="extension.clean_cache_interval_successful_orders">
+                            </div>
+                        </md-input-container>
+
+                        <md-input-container flex="50">
+                            <div class="col-wrapper">
+                                <label for="maximum_decline_attempts">Clean Cache of Decline Orders (in days)</label>
+                                <input required="" type="text" name="clean_cache_decline_orders" ng-model="extension.clean_cache_interval_decline_orders">
+                            </div>
+                        </md-input-container>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="top-gap-25 layout-margin">
+                <div layout="row" layout-align="end">
+                    <md-button  type="button" class="md-raised" ng-href="#/extensions">Cancel</md-button>
+                    <md-button  ng-disabled="datacaptureForm.$invalid || datacaptureForm.$submitted" class="md-primary md-raised" type="submit">Save Settings</md-button>
+                </div>        
+            </div>
+        </form>
+    </md-content>
+</div>

@@ -1,0 +1,460 @@
+<div layout="row" layout-align="center" class="wrap-top-gap" ng-controller="delayTransaction">
+    <md-content class="f1f1f1" flex>
+        <form name="delaytransactionForm" ng-submit="saveExtension()" novalidate>
+            <div md-whiteframe="3" layout-padding layout-margin  style="background: white">
+                <div class="row-form-panel">
+                    <div class="col-wrapper">
+                        <div layout="row">
+                            <md-input-container flex="50">
+                                <p>Table Name&nbsp;<i class="material-icons  last_modified_icon">
+					help_outline <md-tooltip
+						md-direction="right">
+						Table name for delay order record
+					</md-tooltip>
+				</i></p>
+                                <input type="text" class="purple-cell" name="table_name" ng-model="extension.table_name" aria-label="Show added input" required>
+                            </md-input-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div md-whiteframe="3" layout-padding layout-margin  style="background: white">
+                <div class="row-form-panel">
+                    <div layout="row">
+                        <div flex="100" layout="column" flex="nogrow">
+                            <div class="col-wrapper">
+                                <md-switch class="right-shift" ng-model="extension.enable_pre_auth"><h2 class="mat-h2">Pre-authorization</h2></md-switch>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-form-panel" style="border:0" ng-if="extension.enable_pre_auth">
+                    <div class="row-form-panel" style="border:0;padding-top: 0;">
+                        <div class="col-wrapper">
+                            <div layout="row">
+                                <md-input-container flex="50">
+                                    <label for="crm_label" >Authorization Amount</label>
+                                    <input type="text" class="purple-cell" name="extension.auth_amount" ng-model="extension.authorization_amount" aria-label="Show added input" required>
+                                </md-input-container>
+                            </div>
+                            <div layout="row">
+                                <div flex="100"  layout="row">
+                                    <md-checkbox ng-model="extension.enable_preauth_log" aria-label="Back Button Checkbox">
+                                        Enable Pre-authorization Log
+                                    </md-checkbox>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div md-whiteframe="3" layout-padding layout-margin  style="background: white">
+                <div class="row-form-panel">
+                    <div layout="row">
+                        <div flex="100" layout="column" flex="nogrow">
+                            <div class="col-wrapper">
+                                <md-switch class="right-shift" ng-model="extension.combine_steps"><h2 class="mat-h2">Order Combine</h2></md-switch>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-form-panel" ng-if="extension.combine_steps">
+                    <div class="row-form-panel">
+                        <div class="col-wrapper">
+                            <div layout="row">
+                                <md-input-container flex="50">
+                                    <label for="crm_label" >Ignore Steps (comma separated)</label>
+                                    <input type="text" class="purple-cell" ng-model="extension.ignore_steps" aria-label="Show added input">
+                                </md-input-container>
+                            </div>
+                            <div layout="row">
+                                <div flex="100"  layout="row">
+                                    <md-checkbox ng-model="extension.combine_split" aria-label="Back Button Checkbox">
+                                        Combine Split Charges with Combined Order
+                                    </md-checkbox>
+                                </div>
+                            </div>
+                            <div layout="row">
+                                <div flex="100"  layout="row">
+                                    <md-checkbox ng-model="extension.process_orders_at_thankyou" aria-label="Back Button Checkbox">
+                                        Process Combined Orders at Thank You Page
+                                    </md-checkbox>
+                                </div>
+                            </div>
+<!--                            <div layout="row">
+                                <div flex="100"  layout="row">
+                                    <md-checkbox ng-model="extension.enable_delay" aria-label="Back Button Checkbox">
+                                        Enable Delay
+                                    </md-checkbox>
+                                </div>
+                            </div>-->
+                        </div>
+<!--                        <div class="row-form-panel" layout="column">
+                            <div class="col-wrapper">
+                                <div layout="row">
+                                    <md-input-container flex>
+                                        <div class="col-wrapper">
+                                            <label for="shipping_id" >Type</label>
+                                            <md-select name="delay_type" ng-model="extension.delay_type">
+                                                <md-option ng-repeat="type in delay_type_list" value="{{type}}">{{type}}</md-option>
+                                            </md-select>
+                                        </div>
+                                    </md-input-container>
+                                    <md-input-container flex>
+                                        <div class="col-wrapper">
+                                            <label for="shipping_price" >Delay time (in minutes)</label>
+                                            <input type="text" name="delay_time" ng-model="extension.delay_time">
+                                        </div>
+                                    </md-input-container>
+                                    <md-input-container flex>
+                                        <div class="col-wrapper">
+                                            <label for="shipping_id" >Purge (in hours)</label>
+                                            <input type="text" name="purge_time" ng-model="extension.purge_time">
+                                        </div>
+                                    </md-input-container>
+                                </div>  
+                            </div>
+                        </div>-->
+                    </div>
+                </div>
+                <div class="row-form-panel">
+                    <div layout="row">
+                        <div flex="100" layout="column" flex="nogrow">
+                            <div class="col-wrapper">
+                                <md-switch class="right-shift" ng-model="extension.reprocess_decline"><h2 class="mat-h2">Reprocess Declined Orders</h2></md-switch>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-wrapper" ng-if="extension.reprocess_decline">
+                        <div layout="row" style="margin-top: 20px;">
+                            <md-input-container flex="50">
+                                <div class="col-wrapper">
+                                    <label for="crm_label" >Select Reprocessing Campaign</label>
+                                    <md-select name="reprocess_campaignId" ng-model="extension.reprocess_campaignId">
+                                        <md-option ng-repeat="campaign in campaign_lists" value="{{campaign.id}}">{{campaign.campaign_label}}
+                                            <span>({{campaign.id}})</span>
+                                        </md-option>
+                                    </md-select>
+                                </div>
+                            </md-input-container>
+                            <md-input-container flex="50">
+                                <div class="col-wrapper">
+                                    <label for="crm_label" >Specify Steps (comma separated)</label>
+                                    <input type="text" class="purple-cell" name="reprocess_steps" ng-model="extension.reprocess_steps" aria-label="Show added input">
+                                </div>
+                            </md-input-container>
+                        </div>
+                        <div layout="row">
+                            <md-input-container flex>
+                                <div class="col-wrapper">
+                                    <div layout="row" class="gap-top-5">
+                                        <div flex layout="column" layout-align="center">
+                                            <label for="">Decline Reasons to Reprocess (Specify each decline reason on separate line)</label>
+                                        </div>
+                                    </div>
+                                    <div class="div-wrapper">
+                                        <textarea class="input-area padding-15" rows="5" name="declined_reason"  ng-model="extension.declined_reason">
+                                        </textarea>
+                                    </div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row-form-panel">
+                    <div class="col-wrapper">
+                        <p>Clean Order Cache</p>
+                    </div>
+                    <div class="col-wrapper">
+                        <div layout="row">
+                            <md-input-container flex="50">
+                                <div class="col-wrapper">
+                                    <label for="crm_label" >Clean Cache of Successful Orders (in minutes)</label>
+                                    <input type="text" class="purple-cell" name="clr_payload_duration_success_orders" ng-model="extension.clr_payload_duration_success_orders" aria-label="Show added input">
+                                </div>
+                            </md-input-container>
+                            <md-input-container flex="50">
+                                <div class="col-wrapper">
+                                    <label for="crm_label" >Clean Cache of Decline Orders (in minutes)</label>
+                                    <input type="text" class="purple-cell" name="clr_payload_decline_orders" ng-model="extension.clr_payload_decline_orders" aria-label="Show added input">
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div md-whiteframe="3" layout-padding layout-margin  style="background: white">
+                <div class="row-form-panel">
+                    <div layout="row">
+                        <div flex="100" layout="column" flex="nogrow">
+                            <div class="col-wrapper">
+                                <md-switch class="right-shift" ng-model="extension.bypass_kount_session"><h2 class="mat-h2">Bypass Kount Session Post</h2></md-switch>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-form-panel">
+                    <div layout="row">
+                        <div flex="100" layout="column" flex="nogrow">
+                            <div class="col-wrapper">
+                                <md-switch class="right-shift" ng-model="extension.ignore_split_charge_for_advance_flow"><h2 class="mat-h2">Ignore Split Charge For Advance Flow</h2></md-switch>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-form-panel">
+                    <div layout="row">
+                        <div flex="100" layout="column" flex="nogrow">
+                            <div class="col-wrapper">
+                                <md-switch class="right-shift" ng-model="extension.allow_pixel_fire_for_delay"><h2 class="mat-h2">Allow HTML Pixel Fire For Delay</h2></md-switch>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div md-whiteframe="3" layout-padding layout-margin  style="background: white">
+                <div class="row-form-panel">
+                    <div layout="row">
+                        <div flex="100" layout="column" flex="nogrow">
+                            <div class="col-wrapper">
+                                <md-switch class="right-shift" ng-model="extension.retry_preauth"><h2 class="mat-h2">Enable Pre-authorization Cascade</h2></md-switch>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--                <div class="row-form-panel" style="border:0" ng-if="extension.retry_preauth">
+                    <div class="row-form-panel" style="border:0;padding-top: 0;">
+                        <div class="col-wrapper">
+                            <div layout="row">
+                                <md-input-container flex="50">
+                                    <div class="col-wrapper">
+                                        <label for="crm_type">Initial Pre-authorization</label>
+                                        <input type="text" class="purple-cell" name="add_auth_amount" ng-model="extension.add_auth_amount" aria-label="Show added input" required>
+                                    </div>
+                                </md-input-container>
+                                <md-input-container flex="50" style="margin-top:15px;">
+                                    <div class="col-wrapper">
+                                        <md-button class="md-primary md-raised" ng-click="addAuthAmountField(add_auth_amount)" ng-if="!loaderVerify">Add</md-button>
+                                    </div>
+                                </md-input-container>
+                            </div>
+                            <div layout="row" layout-wrap="" flex="100">
+                                <div class="loop-colum" layout-alignment="stretch" style="display: flex; align-items: stretch;padding-top: 0;margin-top: 10px;" flex="50" ng-repeat="obj in extension.authAmount track by $index">
+                                    <md-input-container flex class="add-colum-panel">
+                                        <div class="col-wrapper">
+                                            <label for="endpoint">Authorization Amount (Retry {{$index + 1}})</label>
+                                            <input type="text" class="purple-cell" aria-label="Show added input" name="add_auth_amount" ng-model="extension.authAmount[$index].add_auth_amount">
+                                            <md-button class="md-icon-button " aria-label="More" ng-click="remove($index, 'authAmount');" style="top:20px;">
+                                                <i class="material-icons">remove</i>
+                                            </md-button>
+                                        </div>
+                                    </md-input-container>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+                
+            <div class="row-form-panel" style="border:0" ng-if="extension.retry_preauth">
+                <div class="row-form-panel" style="border:0;padding-top: 0;">
+                    <div class="col-wrapper">
+                        <div layout="row" ng-repeat="step_campaign_map in extension.step_campaign_map track by $index">
+
+                                <div ng-if="$index == 0"  flex="100" class="loop-colum" layout-alignment="stretch" style="display: flex; align-items: stretch;">
+
+                                    <md-input-container flex>
+                                        <div class="col-wrapper">
+                                            <label for="authorization_amount">Authorization Amount (Retry 1) </label>
+                                            <input type="text" name="authorization_amount" ng-model="extension.step_campaign_map[$index]['authorization_amount']" required>
+                                        </div>
+                                    </md-input-container>
+                                    <md-input-container flex class="add-colum-panel placeholder-label">
+                                        <div class="col-wrapper">       
+                                            <label for="campaign_id" style="margin-bottom: 5px;">Campaign ID </label>
+                                            <div class="select-plus">
+                                                <md-select name="campaign_id" ng-model="extension.step_campaign_map[$index]['campaign_id']" required>
+                                                    <md-option ng-repeat="campaign in campaign_lists" value="{{ campaign.id }}">
+                                                        {{ campaign.campaign_label }} ({{ campaign.id }})
+                                                    </md-option>
+                                                </md-select>
+
+                                                <md-button class="md-icon-button md-primary" ng-if="(extension.step_campaign_map.length) == 1" ng-click="addStepMethod()">
+                                                    <i class="material-icons">add</i>
+                                                </md-button>
+                                            </div>
+
+                                        </div>
+                                    </md-input-container>
+                                </div>
+                                <div ng-if="$index != 0" flex="100" class="loop-colum" layout-alignment="stretch" style="display: flex; align-items: stretch;">
+                                    <md-input-container flex >
+                                        <div class="col-wrapper">
+                                            <label for="authorization_amount">Authorization Amount (Retry {{$index + 1}})</label>
+                                            <input type="text" name="authorization_amount" ng-model="extension.step_campaign_map[$index]['authorization_amount']" required>
+                                        </div>
+                                    </md-input-container>
+                                    <md-input-container flex="" class="add-colum-panel placeholder-label">  
+                                        <div class="col-wrapper">
+                                            <label for="campaign_id" style="margin-bottom: 5px;">Campaign ID </label>
+                                            <div class="select-plus">
+                                                <md-select ng-blur="edit($index)" name="campaign_id" ng-model="extension.step_campaign_map[$index]['campaign_id']" required>
+                                                    <md-option ng-repeat="campaign in campaign_lists" value="{{ campaign.id }}">
+                                                        {{ campaign.campaign_label }} ({{ campaign.id }})
+                                                    </md-option>
+                                                </md-select>
+
+                                                <md-button class="md-icon-button md-primary" ng-class="{'right-30': (extension.step_campaign_map.length - 1) == $index}" aria-label="Add" ng-click="removeStep($index);">
+                                                    <i class="material-icons">remove</i>
+                                                </md-button>
+                                                <md-button class="md-icon-button md-primary" ng-if="(extension.step_campaign_map.length - 1) == $index" ng-click="addStepMethod()">
+                                                    <i class="material-icons">add</i>
+                                                </md-button>
+                                            </div>
+
+                                        </div>
+                                    </md-input-container>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div md-whiteframe="3" layout-padding layout-margin  style="background: white">
+                <div class="row-form-panel" >
+
+                    <div layout="row">
+                        <div flex="100" layout="column" flex="nogrow">
+                            <div class="col-wrapper">
+                                <md-switch class="right-shift" name="enable_multiple_auth_amount" ng-model="extension.card_based_auth"><h2 class="mat-h2">Enable Multiple Authorization Based on Card Type</h2></md-switch>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-form-panel" ng-if="extension.card_based_auth">
+                        <div class="col-wrapper">
+                            <div layout="row">
+                                <div flex="100" layout="column" flex="nogrow">Product Order Filter Configuration</div>
+                            </div>
+                            <div layout="row" layout-wrap="" flex="100" style="margin-top: 0;">
+                                <div flex="100"  ng-repeat="obj in extension.cardTypeAuth track by $index"  class="loop-colum" layout-alignment="stretch" style="display: flex; align-items: stretch;padding-top: 0;">
+                                    <div flex="100" md-whiteframe="3" layout-padding layout-margin class="o-t-g-20" style="background: white">
+                                        <div class="row-form-panel" layout="column">
+                                            <div layout="row">
+                                                <md-input-container flex>
+                                                    <div class="col-wrapper">
+                                                        <label for="shipping_id" >Card Type</label>
+                                                        <md-select name="card_type" ng-model="extension.cardTypeAuth[$index].card_type" required>
+                                                            <md-option ng-repeat="card in cards" value="{{card}}">{{card| uppercase}}</md-option>
+                                                        </md-select>
+                                                    </div>
+                                                </md-input-container>
+                                                <md-input-container flex>
+                                                    <div class="col-wrapper">
+                                                        <label for="shipping_price" >Authorization Amount</label>
+                                                        <input type="text"  name="percentage" ng-model="extension.cardTypeAuth[$index].auth_amount" required>
+                                                    </div>
+                                                </md-input-container>
+                                            </div>  
+                                        </div>
+                                        <div class="row-form-panel" layout="column" style="border:0">
+                                            <div layout="row" layout-align="end">
+                                                <md-input-container flex>
+                                                    <button class="md-primary md-button md-ink-ripple remove-btn font-italic" type="button"ng-disabled="true" disabled="disabled">Authorization {{$index + 1}}</button>
+                                                </md-input-container>
+                                                <button ng-click="remove($index, 'cardTypeAuth');" ng-if="$index != 0" class="md-button md-ink-ripple remove-btn" type="button" >Remove<div class="md-ripple-container" style=""></div></button>
+                                                <button ng-click="add('cardTypeAuth')"  ng-if="(extension.cardTypeAuth.length - 1) == $index"  class="md-primary md-hue-1 md-button md-ink-ripple remove-btn" type="button" >New Authorization<div class="md-ripple-container" style=""></div></button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div md-whiteframe="3" layout-padding layout-margin  style="background: white">
+                <div class="row-form-panel" >
+
+                    <div layout="row">
+                        <div flex="100" layout="column" flex="nogrow">
+                            <div class="col-wrapper">
+                                <md-switch class="right-shift" name="advanced_delay" ng-model="extension.advanced_delay"><h2 class="mat-h2">Enable Advanced Delay</h2></md-switch>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-wrapper" ng-if="extension.advanced_delay">
+                        <div layout="row" style="margin-top: 20px;">
+                            <md-input-container flex="50">
+                                <div class="col-wrapper">
+                                    <label for="crm_label" >Update Steps (comma separated)</label>
+                                    <input type="text" class="purple-cell" name="update_steps" ng-model="extension.update_steps" aria-label="Show added input" required>
+                                </div>
+                            </md-input-container>
+                            <md-input-container flex="50">
+                                <div class="col-wrapper">
+                                    <label for="crm_label" >Order Processing Steps (comma separated)</label>
+                                    <input type="text" class="purple-cell" name="order_processing_steps" ng-model="extension.order_processing_steps" aria-label="Show added input" required>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div md-whiteframe="3" layout-padding layout-margin  style="background: white">
+                <div class="row-form-panel" >
+                    <div layout="row">
+                        <div flex="100" layout="column" flex="nogrow">
+                            <div class="col-wrapper">
+                                <md-switch class="right-shift" name="allow_original_method" ng-model="extension.allow_original_method"><h2 class="mat-h2">Allow Original Method (For Konnektive)</h2></md-switch>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div md-whiteframe="3" layout-padding layout-margin  style="background: white">
+                <div class="row-form-panel">
+                    <div layout="row">
+                        <div flex="100" layout="column" flex="nogrow">
+                            <div class="col-wrapper">
+                                <md-switch class="right-shift" ng-model="extension.enable_bypass_order_view">
+                                    <h2 class="mat-h2">Bypass Order View</h2>
+                                </md-switch>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-wrapper" style="margin-top: 20px;" ng-if="extension.enable_bypass_order_view">
+                        <div layout="row">
+                            <md-input-container flex="50">
+                                <div class="col-wrapper">
+                                    <label for="maximum_decline_attempts">
+                                        Define Steps <span class='required_field'>*</span>
+                                        <i class="material-icons last_modified_icon">
+                                            help_outline <md-tooltip
+                                                md-direction="right">
+                                                Comma separated
+                                            </md-tooltip>
+                                        </i>
+                                    </label>
+                                    <input required="" type="text" name="bypass_orderview_steps" ng-model="extension.bypass_orderview_steps">
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="top-gap-25 layout-margin">
+                <div layout="row" layout-align="end">
+                    <md-button  type="submit" class="md-raised" ng-href="#/extensions">Cancel</md-button>
+                    <md-button class="md-primary md-raised" type="submit" ng-disabled="delaytransactionForm.$submitted || delaytransactionForm.$invalid || validationMethod() === false">Save Settings</md-button>
+                </div>        
+            </div>
+        </form>
+    </md-content>
+</div>
+<!-- From -->

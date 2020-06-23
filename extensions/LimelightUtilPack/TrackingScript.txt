@@ -1,0 +1,23 @@
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+
+ga( 'create', 'gaCode', 'auto', 'limelightTracker' );
+ga( 'limelightTracker.set', 'dimension1', 'appKey' );
+ga( 'limelightTracker.set', 'dimension2', 'campaignId');
+ga( 'limelightTracker.send', 'pageview' );
+</script>
+
+<script src='//cdn.limelightcrm.com/traffic-attribution/limelight-traffic-attribution.min.js'></script>
+<script>
+UtmCookie = new UtmCookie();
+document.cookie = "utm_medium=" + UtmCookie.utm_medium();
+document.cookie = "utm_source=" + UtmCookie.utm_source();
+document.cookie = "utm_campaign=" + UtmCookie.utm_campaign();
+document.cookie = "utm_term=" + UtmCookie.utm_term();
+document.cookie = "utm_content=" + UtmCookie.utm_content();
+document.cookie = "device_category=" + UtmCookie.device_category();
+</script>

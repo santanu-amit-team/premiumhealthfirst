@@ -1,0 +1,106 @@
+ion-icon {
+  visibility: hidden;
+}
+
+.c5911 {
+  width: 80%;
+  margin-bottom: 0px;
+}
+
+.c6157 {
+  width: 100px;
+}
+
+.c6642 {
+  width: 300px;
+}
+
+.c6887 {
+  width: 170px;
+  height: 32px;
+}
+
+.c6933 {
+  font-size: 12px;
+}
+
+.c123365 {
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  text-align: center;
+}
+
+.c1190 {
+  width: 7%;
+  text-align: left;
+  float: none;
+  font-weight: 700;
+}
+
+.c1178 {
+  float: right;
+  margin-top: 0px;
+  margin-right: 4%;
+  margin-bottom: 0px;
+  margin-left: 0px;
+}
+
+.warnWrap {
+  width: 92%;
+  text-align: center;
+  float: none;
+}
+
+.warnWrap.c1178 {
+  width: 100%;
+}
+
+.btn-custom {
+  backface-visibility: visible !important;
+}
+
+.pulse {
+  animation-name: pulse;
+  -webkit-animation-name: pulse;
+  animation-duration: 1.5s;
+  -webkit-animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.btn {
+  color: #fff !important;
+  background: #d91e18 !important;
+}
+
+.btn:hover {
+  color: #000 !important;
+  background: #FFEB3B !important;
+}
+
+.hero.hero2 {
+  background-image: url(https://cdn.subscribefunnels.com/d6333932-4a63-48e8-b466-59b32878c024/hero-bga.jpg);
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  background-attachment: local;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.9;
+  }
+
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0.9);
+    opacity: 0.9;
+  }
+}

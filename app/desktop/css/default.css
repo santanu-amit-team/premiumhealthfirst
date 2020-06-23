@@ -1,0 +1,13 @@
+/*.page-checkout,.page-upsell1 { background: #fff url('../images/hero-bg.jpg') top center no-repeat; }*/
+.page-checkout,.page-upsell1 { background: #fff url('../images/hero-bg-checkout.jpg') top center no-repeat; background-position: 64% 0%;}
+
+.page-checkout button.submit,.page-upsell1 button.submit { border-radius: 0; background: #D31905 !important; }
+
+
+
+
+.page-checkout .final-step,  .page-checkout .big-arrow,.progress .part div:last-child,.progress .bar { background: #896ded !important; }
+.page-checkout .final-step::after { border-top: 11px solid #896ded !important; }
+.page-checkout .big-arrow::after { border-left: 20px solid #896ded !important; }
+
+.page-checkout footer { background: white; max-width: none; }

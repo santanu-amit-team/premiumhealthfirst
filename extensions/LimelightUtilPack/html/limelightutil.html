@@ -1,0 +1,177 @@
+<div layout="row" layout-align="center" class="wrap-top-gap" ng-controller="limlightUtil">
+    <md-content class="f1f1f1" flex>
+        <form name="limelightUtilForm" ng-submit="saveExtension()" novalidate>
+            <div md-whiteframe="3" layout-padding layout-margin  style="background: white">
+                <div class="row-form-panel">
+                     <div class="col-wrapper">
+                    <p class="md-title" layout-padding>General</p>
+                     </div>
+                    <div class="row-form-panel" style="padding-top:0 ">
+                        <div layout="row">
+                           
+                            <div flex="50" class="loop-colum" layout-alignment="stretch" style="display: flex; align-items: stretch;">
+
+                                <md-input-container flex="100" class="add-colum-panel placeholder-label">
+
+                                    <div class="col-wrapper">
+                                        <label for="crm_label" style="margin-bottom: 5px;">Extended Variables</label>
+                                        <input type="text" name="extension.extra_source_keys" ng-model="extension.extra_source_keys"  aria-label="Add input">
+                                        <md-button style="display:none;" class="md-icon-button" aria-label="More" >
+                                            <i class="material-icons">add</i>
+                                        </md-button>
+                                    </div>
+                                </md-input-container>
+                            </div>
+                        </div>
+                        <div layout="row" layout-wrap="" >
+                          
+                            <div flex="50" class="loop-colum" layout-alignment="stretch" style="display: flex; align-items: stretch;">
+
+                                <md-input-container flex="100" class="add-colum-panel placeholder-label">
+
+                                    <div class="col-wrapper">
+                                        <label for="crm_label" style="margin-bottom: 5px;">Source Variable</label>
+                                        <input type="text" name="extension.source" ng-model="extension.source_variable"  aria-label="Add input">
+                                        <md-button style="display:none;" class="md-icon-button" aria-label="More" >
+                                            <i class="material-icons">add</i>
+                                        </md-button>
+                                    </div>
+                                </md-input-container>
+                            </div>
+
+                            <div flex="50" class="loop-colum" layout-alignment="stretch" style="display: flex; align-items: stretch;">
+
+                                <md-input-container flex="100" class="add-colum-panel placeholder-label">
+
+                                    <div class="col-wrapper">
+                                        <label for="crm_label" style="margin-bottom: 5px;">Custom Field (Limelight)</label>
+                                        <input type="text" name="add_custom_field" ng-model="add_custom_field"  aria-label="Add input">
+                                        <md-button style="top:20px;" class="md-icon-button" aria-label="More" ng-click="addMethod(add_custom_field)">
+                                            <i class="material-icons">add</i>
+                                        </md-button>
+                                    </div>
+                                </md-input-container>
+                            </div>
+
+                            <div ng-repeat="custom_fields in extension.custom_fileds track by $index" flex="50" class="loop-colum" layout-alignment="stretch" style="display: flex; align-items: stretch;">
+                                <md-input-container flex="100" class="add-colum-panel placeholder-label">
+                                    <div class="col-wrapper">
+                                        <input ng-blur="edit($index);" required=""  type="text" name="card" ng-model="extension.custom_fileds[$index]"  aria-label="Add input">
+                                        <md-button class="md-icon-button" aria-label="More" ng-click="remove($index);">
+                                            <i class="material-icons">remove</i>
+                                        </md-button>
+                                    </div>
+                                </md-input-container>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row-form-panel">
+                        <div layout="row">
+                            <div flex="100" layout="column" flex="nogrow">
+                                <md-switch class="right-shift" ng-model="extension.remove_note"><h2 class="mat-h2">Remove Notes From Payload</h2></md-switch>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-form-panel">
+                        <div layout="row">
+                            <div flex="100" layout="column" flex="nogrow">
+                                <md-switch class="right-shift" ng-model="extension.membership_service"><h2 class="mat-h2">Activate Membership Service</h2></md-switch>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-form-panel">
+                        <div layout="row">
+                            <div flex="100" layout="column" flex="nogrow">
+                                <md-switch class="right-shift" ng-model="extension.encrypt_note"><h2 class="mat-h2">Encrypt Notes On Payload</h2></md-switch>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-form-panel">
+                        <div layout="row">
+                            <div flex="100" layout="column" flex="nogrow">
+                                <md-switch class="right-shift" ng-model="extension.prospect_note"><h2 class="mat-h2">Allow Note For Prospect</h2></md-switch>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-form-panel">
+                        <div layout="row">
+                            <div flex="100" layout="column" flex="nogrow">
+                                <md-switch class="right-shift" ng-model="extension.order_note"><h2 class="mat-h2">Allow Note For Orders</h2></md-switch>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-form-panel">
+                        <div layout="row">
+                            <div flex="100" layout="column" flex="nogrow">
+                                <md-switch class="right-shift" ng-model="extension.remove_offer_url_from_note"><h2 class="mat-h2">Remove Source URL From Note</h2></md-switch>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-form-panel">
+                        <div layout="row">
+                            <div flex="100" layout="column" flex="nogrow">
+                                <md-switch class="right-shift" ng-model="extension.enable_campaign_override"><h2 class="mat-h2">Enable Settings Override (CID, PID, SID)</h2></md-switch>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-form-panel">
+                        <div layout="row">
+                            <div flex="100" layout="column" flex="nogrow">
+                                <md-switch class="right-shift" ng-model="extension.enable_pixel_fire"><h2 class="mat-h2">Enable Pixel Fire On Reprocessed Orders (which originally declined by fraud prevention providers)</h2></md-switch>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-form-panel">
+                        <div layout="row">
+                            <div flex="100" layout="column" flex="nogrow">
+                                <md-switch class="right-shift" ng-model="extension.bypass_ll_zero_value"><h2 class="mat-h2">Ignore Zero Value From Pricing</h2></md-switch>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-form-panel">
+                        <div layout="row">
+                            <div flex="100" layout="column" flex="nogrow">
+                                <md-switch class="right-shift" ng-model="extension.limelight_tracking"><h2 class="mat-h2">Enable Limelight Tracking</h2></md-switch>
+                            </div>
+                        </div>
+                        <div class="row-form-panel with-padding" ng-if="extension.limelight_tracking">
+                            <div layout="row">
+                                <md-input-container flex="50">
+                                    <div class="col-wrapper">
+                                    <label for="crm_label" >APP Key</label>
+                                    <input type="text" class="purple-cell" name="extension.app_key" required ng-model="extension.app_key" aria-label="Show added input" >
+                                    </div>
+                                </md-input-container>
+                                <md-input-container flex="50">
+                                    <div class="col-wrapper">
+                                    <label for="crm_label" >Google Analytics Code</label>
+                                    <input type="text" class="purple-cell" name="extension.analytics_code" required ng-model="extension.ga_code" aria-label="Show added input" >
+                                    </div>
+                                </md-input-container>
+                            </div>
+                            <div layout="row">
+                                <md-input-container flex="50">
+                                     <div class="col-wrapper">
+                                    <label for="crm_label" >Type</label>
+                                    <md-select name="tracking_type" ng-model="extension.tracking_type" required>
+                                        <md-option ng-repeat="track in trackingTypeList" value="{{track}}">{{track| uppercase}}</md-option>
+                                    </md-select>
+                                     </div>
+                                </md-input-container>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="top-gap-25 layout-margin">
+                <div layout="row" layout-align="end">
+                    <md-button  type="submit" class="md-raised" ng-href="#/extensions">Cancel</md-button>
+                    <md-button class="md-primary md-raised" ng-disabled="limelightUtilForm.$submitted || limelightUtilForm.$invalid || validationMethod() === false" type="submit">Save Settings</md-button>
+                </div>        
+            </div>
+
+        </form>
+    </md-content>
+</div>

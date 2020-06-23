@@ -1,0 +1,166 @@
+
+#upsell-box { background: white; padding: 20px; }
+
+h3 { margin-bottom: 0; }
+h2 { color: red; margin-top: 35px; margin-bottom: 0; }
+h2+p,h3+p { margin: 0; }
+
+.bottle {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;;
+    height:215px;
+    width:237px;
+    margin: 21px 0 21px 5px;
+    display: inline-block;
+}
+
+.coupon-container {
+    text-align: center;
+    border: 5px dashed black;
+    margin: 25px auto;
+	background: #eff9fc;
+    position: relative;
+}
+.bottle-info {
+
+    text-align: center;
+    padding: 20px 0;
+    font-size: 16px;
+}
+
+.bottle-info p.line-1 { 
+    font-weight: bold;
+	margin: 0;
+}
+
+.bottle-info p.line-2 { 
+    font-weight: bold;
+    font-size: 22px;
+    margin: 0;
+    color: red;
+}
+
+.bottle-info p.line-3 { margin:0; }
+
+.bottle-info p.line-3 strong { 
+    font-weight: bold;   
+    font-size: 25px;
+}
+
+.bottle-info p.line-4 { 
+    margin-top: 10px;
+}
+
+.bottle-info p.line-4 span { 
+    text-transform: uppercase;
+}
+
+.bottle-info p.line-5 .retail { font-size: 18px; text-decoration: line-through; color: red;}
+
+.bottle-info p.line-5 { 
+    font-size: 35px;
+    font-weight: bold;
+	margin: 0;
+}
+
+.left { color: red; text-decoration:  underline; }
+
+
+.decline { text-align: center; margin-top: 35px; }
+.decline a { font-size: 12px; color:#555; }
+
+
+
+.form-error { display: none }
+/*VALIDATION*/
+input[type=text]:focus, input[type=tel]:focus, input[type=email]:focus, select:focus {
+    border: 1px solid grey;
+    border-bottom: 1px solid #1e90ff;
+    outline:none;
+}
+span.help-block.form-error {
+    display: none;
+}
+
+.has-error input[type=email],.has-error input[type=text],.has-error input[type=tel],.has-error.has-success input#phone_mask,.has-error select{
+    border: 1px solid #ff5e45 !important;
+    background: #fff url('img/icon-validation-bad.png') right center no-repeat !important;
+    background-size: 30px !important;
+}
+
+.has-success input[type=email], .has-success input[type=text],.has-success input[type=tel], .has-success select{
+    background: #fff url('img/icon-validation-good.png') right center no-repeat !important;
+    background-size: 30px !important;
+}
+
+.progress { 
+    position: relative; padding: 10px 0px;
+        width: 320px;
+    margin: 0 auto;
+}
+
+.progress .bar {     
+    height: 5px;
+    width: 34%;
+    border-right: 120px solid #ddd;
+    position: absolute;
+    top: 65px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.progress .part { 
+    float:left; 
+    width:33.3%;
+    text-align: center;
+    position: relative;
+    padding-top: 15px;
+
+}
+.progress .part div:first-child {
+    font-size: 11px; 
+}
+.progress .part div:last-child {
+    border:3px solid #d4d4d4;
+    border-radius: 100%;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    display:inline-block;
+    color:white;
+    margin-top:10px;
+}
+
+.progress .part.grey div:last-child {
+    background: #ddd !important;
+}
+
+
+@media only screen and (min-width: 1028px) {
+    .seals { float: right; display: block; margin-right: 15px; }
+    .bottle-info { float: right; width: 330px; }
+    
+    .coupon-container {
+        width: 600px;
+        cursor: pointer; 
+    }
+    
+    .coupon-container:hover { background: #f4f4f4; }
+    .coupon-container[noclick] { background: #fff; cursor: default;}
+    
+    .progress .bar {
+        border-right: 340px solid #ddd;
+    }
+}
+
+.upsell-msrp { text-decoration: line-through; font-size: 24px;  color: #be0000; }
+
+.scissors { position: absolute;right: -30px;top: 50%; transform: translateY(-50%); }
+
+@media only screen and (max-width:360px) {
+    .progress {
+    width: 264px;
+    margin: 0 auto;}
+
+}

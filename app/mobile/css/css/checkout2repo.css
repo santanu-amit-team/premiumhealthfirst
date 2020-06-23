@@ -1,0 +1,972 @@
+@charset "UTF-8";
+body,
+html {
+	padding: 0;
+	margin: 0;
+	font-family: Arial;
+	font-size: 14px;
+	color: #4a4947;
+	background: url(https://cdn.subscribefunnels.com/ff82af7f-3782-4be4-8989-0a9296ab7e15/cp-bg2.jpg) top center repeat-x;
+}
+
+.attention {
+	font-weight: 700;
+	padding-top: 8px;
+	padding-left: 20px;
+	padding-bottom: 10px;
+	border: 4px dashed #d50008;
+	background-color: #FFFFFF;
+	-webkit-box-shadow: 2px 2px 5px #676767;
+	box-shadow: 2px 2px 5px #676767;
+}
+
+.special {
+	display: none;
+}
+
+.cover {
+	display: block;
+}
+
+.cover-m {
+	display: none;
+}
+
+.desktop {
+	display: block;
+}
+
+.mobile {
+	display: none;
+}
+
+.nopad {
+	padding: 0;
+}
+
+.formTop {
+	background: #0699ee;
+}
+
+.formBg {
+	background: #fff;
+}
+
+.formBox {
+	max-width: 498px;
+	border-radius: 15px;
+	overflow: hidden;
+	border: 4px solid #0699ee;
+}
+
+.formContent {
+	padding: 10px 20px 20px 20px;
+	color: #000;
+}
+
+.formContent h2 {
+	color: #000;
+	font-size: 16px;
+	font-weight: bold;
+	padding-bottom: 5px;
+	margin-top: 0px;
+	text-align: center;
+}
+
+.formContent label {
+	margin-top: 5px;
+}
+
+.sandy {
+	background: url(https://cdn.subscribefunnels.com/ff82af7f-3782-4be4-8989-0a9296ab7e15/sandybg.jpg) top center no-repeat;
+}
+
+.shadowbox {
+	border-radius: 15px;
+	overflow: hidden;
+	box-shadow: 0px 4px 5px #888;
+	background: #fff;
+	margin-top: 0;
+}
+
+.underline {
+	text-decoration: underline;
+	color: #b98a51;
+}
+
+.underline span {
+	color: #4a4947;
+}
+
+.orange {
+	color: #d95a1b;
+}
+
+.maroon {
+	color: #af143a;
+}
+
+.purple {
+	color: #7f2156;
+}
+
+.black {
+	color: #000000;
+}
+
+.darkgreen {
+	color: 435329;
+}
+
+.title {
+	font-size: 20px;
+}
+
+.title2 {
+	font-size: 17px;
+}
+
+.sandBox {
+	border: 1px solid #47523c;
+	background: url(https://cdn.subscribefunnels.com/ff82af7f-3782-4be4-8989-0a9296ab7e15/sandy-background.jpg);
+	border-radius: 15px;
+	overflow: hidden;
+}
+
+.bText {
+	line-height: 29px;
+	color: #4f391c;
+}
+
+.testBG {
+	background: url(https://cdn.subscribefunnels.com/ff82af7f-3782-4be4-8989-0a9296ab7e15/testimonials-m-bg.jpg) top center repeat-y;
+	font-size: 14px;
+	color: #1c6314;
+	line-height: 25px;
+}
+
+.ftrbg {
+	background: url(https://cdn.subscribefunnels.com/ff82af7f-3782-4be4-8989-0a9296ab7e15/ftr-bg-span.jpg) top left repeat-x;
+}
+
+#disclaimers {
+	font-size: 12px;
+	color: #666;
+}
+
+#disclaimers a {
+	color: #666;
+}
+
+.product1 {
+	width: 151px;
+}
+
+@media (max-width:768px) {
+	.attention {
+		font-size: .75em;
+	}
+	.nopad2 {
+		padding-left: 0px;
+		margin-top: 10px;
+	}
+	.cover {
+		display: none;
+	}
+	.cover-m {
+		display: block;
+	}
+	.desktop {
+		display: none;
+	}
+	.mobile {
+		display: block;
+	}
+	.shadowbox {
+		margin: 0 5%;
+	}
+	.sandBox {
+		margin: 0 5%;
+	}
+}
+
+#billing-page {
+	background: transparent url('billing-content-bg.png') no-repeat scroll center top;
+}
+
+.billing-head {
+	margin-bottom: 30px;
+}
+
+.content-left {
+	max-width: 685px;
+	padding: 0px 30px;
+}
+
+#form.billing {
+	text-align: center;
+	height: auto;
+	position: relative;
+	width: 315px;
+	border: 1px solid rgb(169, 169, 169);
+}
+
+#form.billing .secure-256 {
+	margin: 90px 0px 10px;
+	text-align: center;
+	font-size: 0.846em;
+}
+
+#form.billing .verified-by-logos {
+	margin: 15px 0px 30px;
+	text-align: center;
+}
+
+#form.billing .cvv-image {
+	margin-left: 10px;
+}
+
+#form.billing .cvv-text {
+	padding: 0px 20px 3px 10px ! important;
+	font-size: 11px;
+}
+
+.btn {}
+
+.btn input.button {
+	margin: 0px auto;
+	background: transparent url('billing-button.png') no-repeat scroll center top;
+	width: 293px;
+	height: 81px;
+	cursor: pointer;
+	border: medium none;
+}
+
+.btn input.button:hover {
+	background-position: center bottom;
+}
+
+.viewing {
+	max-width: 625px;
+	color: rgb(255, 255, 255);
+	height: 64px;
+	margin-bottom: 30px;
+	background-color: rgb(0, 106, 154);
+	border: 2px solid rgb(198, 198, 198);
+	padding: 16px 10px;
+	text-align: center;
+}
+
+.viewing p {
+	margin-bottom: 0px ! important;
+}
+
+.viewing p::before {
+	content: url('https://cdn.subscribefunnels.com/ff82af7f-3782-4be4-8989-0a9296ab7e15/eye2.png');
+	margin: 0px 5px 0px 0px;
+	position: relative;
+	top: 4px;
+}
+
+.choice {
+	text-align: left;
+	font-weight: 400;
+	margin-bottom: 30px;
+}
+
+.product {
+	text-align: left;
+	max-width: 365px;
+	width: 59%;
+	float: left;
+	margin-bottom: 30px;
+	margin-left: 30px;
+}
+
+.product p {
+	margin-bottom: 0px ! important;
+}
+
+.product-image {
+	float: left;
+	width: 30%;
+}
+
+.billing-postal-logos {
+	margin-top: 20px;
+}
+
+.product table {
+	margin-top: 8px;
+}
+
+.product tr,
+#confirmation .order-receipt tr {
+	border-bottom: 1px solid rgb(204, 204, 204);
+}
+
+.product tr,
+#confirmation .order-receipt tr {
+	border-bottom: 1px solid rgb(204, 204, 204);
+}
+
+.product tr.noborder,
+#confirmation .order-receipt tr.noborder {
+	border: medium none;
+}
+
+.product table td {
+	padding: 5px 0px;
+}
+
+.protect-package a:hover::before {
+	content: "";
+	display: block;
+	background: transparent url('billing-protect-package-hover.png') repeat scroll 0% 0%;
+	width: 226px;
+	height: 237px;
+	position: absolute;
+	top: -237px;
+	left: 170px;
+}
+
+.arrow {
+	background: transparent url('billing-arrow.png') no-repeat scroll 0% 0%;
+	width: 684px;
+	height: 109px;
+	clear: both;
+	margin-left: -30px;
+	margin-bottom: 30px;
+}
+
+.terms {
+	max-width: 600px;
+	font-size: 12px;
+	line-height: 18px;
+	text-align: justify;
+	color: rgb(170, 170, 170);
+	padding-bottom: 50px;
+	clear: both;
+}
+
+.footer-links {
+	margin: 0px auto;
+	font-size: 11px;
+	line-height: 18px;
+	text-align: center;
+	padding-bottom: 50px;
+	clear: both;
+}
+
+.footer-links a {
+	text-decoration: none;
+	color: rgb(0, 0, 0);
+}
+
+.isyourbilling {
+	margin: 0px 0px 20px;
+}
+
+.cc-logos {
+	margin: 20px 0px 0px;
+}
+
+.discount td,
+#confirmation .order-receipt .discount td {
+	display: none;
+}
+
+.discounted,
+#confirmation .order-receipt .discounted {
+	display: none;
+}
+
+.showAddress .whatisthis a:hover::before {
+	top: 260px;
+}
+
+#upsell .decline::before {
+	content: url('upsell-decline.png');
+	margin: 0px 10px 0px 0px;
+	position: relative;
+	top: 2px;
+}
+
+#upsell .secure-256 p::before {
+	content: url('lock.png');
+	margin: 0px 10px 0px 0px;
+}
+
+td {
+	width: 100%;
+}
+
+#form input[type="text"] {}
+
+.billing-info label {
+	display: inline-block;
+	width: 100px;
+}
+
+.billing-info p {}
+
+.billing-info label {
+	float: left;
+	width: 79px;
+	text-align: left;
+	font: 12px arial;
+}
+
+.checkout #form select {
+	margin: 0px;
+}
+
+.checkout #form input[type="text"],
+.checkout #form select {}
+
+@media(max-width: 767px) {
+	.blinkVisa {
+		text-align: center;
+	}
+}
+
+@media (max-width: 640px) {
+	.content-left,
+	.viewing,
+	.product,
+	.terms {
+		width: 100%;
+		padding: 10px;
+		margin: 0;
+	}
+	.viewing {
+		height: auto;
+	}
+	.content-left {
+		text-align: center;
+	}
+	.product {
+		max-width: 100%;
+	}
+	.product-image {
+		float: none;
+		width: 100%;
+		margin: auto;
+		text-align: center;
+	}
+	.product1 {
+		display: inline-block;
+		width: auto;
+		max-width: 30%;
+	}
+}
+
+@media(max-width: 400px) {
+	.product1 {
+		max-width: 50%;
+	}
+}
+
+.protect-package {
+	font: normal 12px arial;
+	background: url(https://cdn.subscribefunnels.com/ff82af7f-3782-4be4-8989-0a9296ab7e15/ftkld.png) no-repeat;
+	height: 61px;
+	margin: 15px auto 0 auto;
+}
+
+strong.color1 {
+	color: #FF0000;
+}
+
+.mc-popup {
+	display: none;
+	text-align: center;
+	color: white;
+	background: red;
+	padding: 3px;
+	border-radius: 5px;
+}
+
+.yellow-message.bottom a.close-link {
+	width: 10px;
+	height: 10px;
+	display: block;
+	position: absolute;
+	top: 15px;
+	right: 5px;
+	background: url("../images/image-close-link.png") no-repeat 0 0;
+	background-size: 10px 10px;
+}
+
+.yellow-message2.top {
+	width: 300px;
+	display: none;
+	font-size: 14px;
+	padding: 20px;
+	position: fixed;
+	top: 0;
+	right: 20px;
+	border: 1px solid #ba9712;
+	-webkit-box-shadow: 0 0 7px 2px rgba(0, 0, 0, .3);
+	-moz-box-shadow: 0 0 7px 2px rgba(0, 0, 0, .3);
+	-o-box-shadow: 0 0 7px 2px rgba(0, 0, 0, .3);
+	box-shadow: 0 0 7px 2px rgba(0, 0, 0, .3);
+	background: #edc52d;
+}
+
+.yellow-message2.top a.close-link {
+	width: 10px;
+	height: 10px;
+	display: block;
+	position: absolute;
+	top: 55px;
+	right: 5px;
+	background: url("../images/image-close-link.png") no-repeat 0 0;
+	background-size: 10px 10px;
+}
+
+.yellow-message.top {
+	width: 300px;
+	height: 30px;
+	font-size: 14px;
+	line-height: 30px;
+	text-align: center;
+	position: absolute;
+	top: 106px;
+	right: 196px;
+	border: 1px solid #ba9712;
+	background: #edc52d;
+}
+
+.info-popup {
+	width: 100%;
+	height: 100%;
+	display: none;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 1000;
+	background: rgba(0, 0, 0, 0.75);
+}
+
+.info-popup .popup {
+	width: 680px;
+	font-size: 12px;
+	line-height: 16px;
+	padding: 20px;
+	position: absolute;
+	left: 50%;
+	top: 100px;
+	border-radius: 5px;
+	-webkit-transform: translate(-50%, 0);
+	-moz-transform: translate(-50%, 0);
+	-o-transform: translate(-50%, 0);
+	transform: translate(-50%, 0);
+	background: #fff;
+}
+
+.info-popup .popup .close-link {
+	width: 10px;
+	height: 10px;
+	display: block;
+	opacity: 0.6;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	background: url("../images/image-close-link-black.png") no-repeat 0 0;
+	background-size: 10px 10px;
+}
+
+.info-popup .popup .inner {
+	height: 502px;
+	overflow-y: scroll;
+}
+
+.info-popup .popup h2 {
+	font-size: 24px;
+	line-height: 24px;
+	letter-spacing: -2px;
+	padding: 0 0 21px;
+	margin: 0 0 19px;
+	border-bottom: 1px solid #bbb;
+}
+
+.info-popup .popup h3 {
+	font-size: 18px;
+	line-height: 18px;
+	padding: 5px 0 13px;
+	margin: 0;
+}
+
+.info-popup .popup p {
+	padding: 0 0 11px;
+}
+
+.info-popup .popup ul {
+	list-style: circle;
+	padding: 0 0 0 25px;
+}
+
+.info-popup .popup ul li {
+	padding: 0 0 15px;
+}
+
+.checkbox input[type="checkbox"],
+.checkbox-inline input[type="checkbox"],
+.radio input[type="radio"],
+.radio-inline input[type="radio"] {
+	position: absolute;
+	margin-top: 4px\9;
+}
+
+.checkbox label,
+.radio label {
+	min-height: 20px;
+	padding-left: 0px;
+	margin-bottom: 0;
+	font-weight: 400;
+	cursor: pointer;
+}
+
+.click-below {
+	font: normal 11px arial;
+	margin-top: 5px;
+}
+
+.click-below a {
+	color: #000;
+}
+
+.terms_d {
+	display: block;
+}
+
+.terms_m {
+	display: none;
+}
+
+.top_leftn6 {
+	content: "";
+	position: absolute;
+	height: 105px;
+	background-color: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.03) 1%, rgba(255, 255, 255, 0.6) 30%, rgba(255, 255, 255, 0.85) 50%, rgba(255, 255, 255, 0.85) 70%, rgba(255, 255, 255, 0.85) 71%, rgba(255, 255, 255, 0) 100%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(1%, rgba(255, 255, 255, 0.03)), color-stop(30%, rgba(255, 255, 255, 0.85)), color-stop(50%, rgba(255, 255, 255, 0.85)), color-stop(70%, rgba(255, 255, 255, 0.85)), color-stop(71%, rgba(255, 255, 255, 0.85)), color-stop(100%, rgba(255, 255, 255, 0)));
+	background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.03) 1%, rgba(255, 255, 255, 0.6) 30%, rgba(255, 255, 255, 0.85) 50%, rgba(255, 255, 255, 0.85) 70%, rgba(255, 255, 255, 0.85) 71%, rgba(255, 255, 255, 0) 100%);
+	background: -o-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.03) 1%, rgba(255, 255, 255, 0.6) 30%, rgba(255, 255, 255, 0.85) 50%, rgba(255, 255, 255, 0.85) 70%, rgba(255, 255, 255, 0.85) 71%, rgba(255, 255, 255, 0) 100%);
+	background: -ms-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.03) 1%, rgba(255, 255, 255, 0.6) 30%, rgba(255, 255, 255, 0.85) 50%, rgba(255, 255, 255, 0.85) 70%, rgba(255, 255, 255, 0.85) 71%, rgba(255, 255, 255, 0) 100%);
+	background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.03) 1%, rgba(255, 255, 255, 0.6) 30%, rgba(255, 255, 255, 0.85) 50%, rgba(255, 255, 255, 0.85) 70%, rgba(255, 255, 255, 0.85) 71%, rgba(255, 255, 255, 0) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#00ffffff', GradientType=1);
+	-webkit-animation: mymove 1.5s infinite;
+	-webkit-animation-timing-function: ease-in-out;
+	animation: mymove 1.5s infinite;
+	animation-timing-function: ease-in-out;
+	transform: skew(-10deg, 0deg);
+	-webkit-transform: skew(-10deg, 0deg);
+	-moz-transform: skew(-10deg, 0deg);
+	-ms-transform: skew(-10deg, 0deg);
+	-o-transform: skew(-10deg, 0deg);
+	width: 50px;
+}
+
+@-webkit-keyframes mymove {
+	0% {
+		left: 0;
+		opacity: 0;
+	}
+	5% {
+		opacity: 0.0
+	}
+	48% {
+		opacity: 0.6
+	}
+	80% {
+		opacity: 0.2
+	}
+	100% {
+		left: 95%;
+		opacity: 0.0
+	}
+}
+
+#banner {
+	border-bottom: 1px solid #b2b2b2;
+	height: 94px;
+}
+
+#banner #steps {
+	width: 295px;
+	height: 5px;
+	top: 40px;
+	right: 425px;
+	background: #bab6b1;
+	position: absolute;
+	text-align: center;
+}
+
+#banner #steps #slider {
+	height: 3px;
+	width: 0px;
+	background: #37b500;
+	position: relative;
+	top: -9px;
+}
+
+#banner #steps ul {
+	position: relative;
+}
+
+#banner #steps .step {
+	width: 20px;
+	height: 20px;
+	background: #bab6b1;
+	box-shadow: 0 0 0px 3px #b2b2b2;
+	color: white;
+	font-size: 13px;
+	font-weight: bold;
+	border-radius: 50%;
+}
+
+#banner #steps ul li .step-name {
+	position: relative;
+	left: -25px;
+	padding-top: 8px;
+	font-weight: 600;
+}
+
+#banner #steps .step-1 .step-name,
+#banner #steps .step-2 .step-name {
+	color: #5a5a5a;
+	left: -43px;
+}
+
+#banner #steps .step-3 .step-name {
+	color: #cccccc;
+}
+
+#banner #steps .step-1,
+#banner #steps .step-2,
+#banner #steps .step-3 {
+	top: -8px;
+	position: absolute;
+	z-index:
+}
+
+#banner #steps .step-1 {
+	left: -20px;
+}
+
+#banner #steps .step-2 {
+	left: 142px;
+}
+
+#banner #steps .step-3 {
+	right: -75px;
+}
+
+#banner #steps .step-1 div {
+	background: #37b500;
+	transition: background 3s;
+	-webkit-transition: background 3s;
+	-ms-transition: background 3s;
+}
+
+#banner #steps .step-2 div {
+	transition: background 1s;
+	-webkit-transition: background 1s;
+	-ms-transition: background 1s;
+}
+
+#banner #steps .step p {
+	position: relative;
+	z-index: 10;
+	top: 3px;
+}
+
+#banner h2 {
+	position: absolute;
+	bottom: 0px;
+	font-weight: bold;
+}
+
+.demographic {
+	float: right;
+	text-align: right;
+	margin-top: 15px;
+}
+
+select option {
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.color1 {
+	color: red;
+}
+
+.pulse {
+	display: inline-block;
+	animation-name: pulse;
+	-webkit-animation-name: pulse;
+	animation-duration: 1.5s;
+	-webkit-animation-duration: 1.5s;
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(0.9);
+	}
+	50% {
+		transform: scale(1);
+	}
+	100% {
+		transform: scale(0.9);
+	}
+}
+
+@-webkit-keyframes pulse {
+	0% {
+		-webkit-transform: scale(0.95);
+	}
+	50% {
+		-webkit-transform: scale(1);
+	}
+	100% {
+		-webkit-transform: scale(0.95);
+	}
+}
+
+ul {
+	list-style: none;
+}
+
+@media (max-width: 639px) {
+	.disclaimer_m {
+		display: block;
+	}
+	#disclaimers {
+		display: none;
+	}
+	.terms_d {
+		display: none;
+	}
+	.terms_m {
+		display: block;
+	}
+	#mobile-banner {
+		display: block;
+		width: 100%;
+	}
+	#banner h2 {
+		position: relative;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.billing-postal-logos img {
+		max-width: 100%;
+		height: auto;
+	}
+	.demographic {
+		display: none;
+	}
+}
+
+@media screen and (min-width: 600px) {
+	#mobile-banner {
+	    float: right;
+    width: 439px;
+    margin-top: 3px;
+	}
+}
+
+@media screen and (max-width: 1200px) {
+	#steps {
+		left: 355px;
+	}
+}
+
+@media screen and (max-width: 991px) {
+	.demographic {
+		display: none;
+	}
+	.logo {
+		left: 0 !important;
+	}
+	#steps {
+		left: 205px;
+		top: 20px;
+	}
+}
+
+@media screen and (max-width: 599px) {
+	#steps {
+		display: none;
+	}
+	#banner {
+		height: inherit;
+		text-align: center;
+	}
+}
+
+.disNone {
+	display: none
+}
+
+.style1 {
+	background: white;
+	box-shadow: #000000 0px -20px 52px -8px;
+}
+
+.style2 {
+	position: relative;
+	margin-bottom: 10px;
+}
+
+.style3 {
+	width: auto;
+	position: relative;
+	height: 82px;
+	margin: 0 0 0 30px;
+	padding: 10px 0 0 0;
+}
+
+.style4 {
+	background: rgb(55, 181, 0) none repeat scroll 0% 0%;
+}
+
+.style5 {
+	width: 143px;
+}
+
+.style6 {
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 20px;
+}
+
+.style7 {
+	background: #c8f2aa;
+	border: 2px solid #0a7e01;
+	color: #0a7e01;
+}
+
+.style8 {
+	color: #0a7e01;
+}
+
+.style9 {
+	margin: 10px 0px;
+}
+
+@media only screen and (max-width:1024px){
+.margin-r{
+	margin-right: 13px;
+}
+}
+@media only screen and (max-width:767px){
+.margin-r{
+	margin-right: 0px;
+}
+}

@@ -1,0 +1,8 @@
+.phpintel/*
+error.log
+nbproject/*
+composer.lock
+composer.json
+.DS_Store
+archive/
+.htaccess

@@ -1,0 +1,314 @@
+
+
+/*
+Form styling
+*/
+.kform {/* font-size:1em; *//* font-family:Arial, sans-serif; */}
+div.kform{position:relative;}
+.kform div.kform_spacer {margin:.75em 0;display:block;}
+.kformSpacer {margin:.75em 0;display:block;}
+.kform input[type="text"],input[type="email"],input[type="tel"],input[type="number"] {/* display:inline-block; *//* margin-right:5px; *//* padding:.5em 14px; *//* width:370px; */}
+.kform input[type="checkbox"]{display:inline-block;}
+.kform select {/* padding:.5em 14px; *//* width:400px; */}
+.kform .kform_checkbox label {margin-left:.25em;text-align:left;font-size:1em;vertical-align:middle}
+.kform label {/* padding:5px 5px; *//* display:inline-block; *//* text-align:left; *//* vertical-align:middle; */}
+
+.kformTitle {font-size:larger;font-weight:bold;margin:20px 0;}
+.kformSubTitle {font-size:1em;font-weight:bold;margin:10px 0;}
+
+.kformPaySourceTile {border:1px solid #CCC;padding:10px;background-color:#efefef;margin:10px 0}
+.kformPaySourceTile span{display:inline-block;line-height:1;margin-left:20px;vertical-align:middle}
+.kformPaySourceTile input{vertical-align:middle}
+
+#kform_paySelect {padding-top:1em;border-top:0 dashed #666}
+#kform_paySelectTitle {font-size:1em;font-weight:bold;display:inline-block;}
+.kform_paySelectOption {display:inline-block;margin-left:1em}
+.kform_title {font-size:1em;font-weight:bold;}
+
+#kform_paySourceCard{margin-bottom:2em}
+#kform_paySourceCheck{margin-bottom:2em;display:none}
+
+.kform_submitBtn{/* border:thin outset black; *//* color:white; *//* height:3em; *//* font-weight:bold; *//* font-size:2em; *//* background-color:#316635; *//* display:block; */}
+.kform_submitBtn:hover{/* cursor:pointer; *//* background-color:#125223; */}
+
+.kform_upsellBtn{border:thin outset black;color:white;padding:.75em .5em;font-weight:bold;font-size:1.6em;background-color:#316635;display:inline-block;margin-right:2em;}
+.kform_upsellBtn:hover{cursor:pointer;background-color:#125223}
+
+.kform_salesTaxMessage{float:left;font-weight:bold;font-size:90%;color:red;}
+#kform_taxBtn{margin-left:40px;margin-top:-0px;}
+
+#kform_payPalButton {width:100%}
+#kform_payPalButton:hover {cursor:pointer}
+
+#AmazonPayButton{margin-top:20px}
+#addressBookWidgetDiv{width:400px;height:200px;}
+#walletWidgetDiv{width:400px;height:200px;margin-top:20px}
+
+/*Signature Styling */
+#kform_sigPad {
+	border: 1px solid #000;
+	width: 100%;
+}
+@font-face {
+  font-family: 'dafoe';
+  src: url(https://cdn.subscribefunnels.com/d6333932-4a63-48e8-b466-59b32878c024/assets/css/../assets/dafoe.eot);
+  src: url(https://cdn.subscribefunnels.com/d6333932-4a63-48e8-b466-59b32878c024/assets/css/../assets/dafoe.eot?#iefix) format('embedded-opentype'),
+       url(https://cdn.subscribefunnels.com/d6333932-4a63-48e8-b466-59b32878c024/assets/css/../assets/dafoe.woff) format('woff'),
+       url(https://cdn.subscribefunnels.com/d6333932-4a63-48e8-b466-59b32878c024/assets/css/../assets/dafoe.ttf) format('truetype'),
+       url(https://cdn.subscribefunnels.com/d6333932-4a63-48e8-b466-59b32878c024/assets/css/../assets/dafoe.svg#dafoeRegular) format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+#signatureTypedInput
+{
+  color: #145394;
+  font: normal 80px "dafoe",Georgia,Times,serif;
+  width:auto;
+}
+#kform_sigDisplay
+{
+  padding: 15px;
+}
+
+/*
+Order Summary Styling
+*/
+
+.kform_orderSummaryTable { cell-spacing:1em;width:100%;}
+.kform_orderSummaryTitleRow { font-weight:bold; padding:0 1em}
+.kform_orderSummaryRow { padding:0 1em}
+
+/*
+Shopping cart styling
+*/
+#kform_cartDiv { font-family:Arial, Helvetica, sans-serif;}
+#kform_cartTitle { font-size:1.2em;font-weight:bold;padding:10px 0;}
+#kform_cartTable { width:100%;margin:0px auto 15px auto;font-size:.8em;border-spacing:0}
+#kform_cartTable td{border-bottom:1px solid #ccc;padding:6px 10px}
+#kform_cartTitleRow {background-color:#f8f8f8;font-weight:bold;}
+#kform_cartTitleRow td{font-size:1em;line-height:60px;border-top:1px solid #ccc;}
+#kform_emptyCartMessage {text-align:center;font-size:1.2em;font-style:italic;padding:2em 0 !important}
+.kform_itemQtyBox {width:30px;display:inline-block}
+.kform_cartProductImg {max-width:150px;max-height:75px;vertical-align:middle}
+.kform_removeBtn {font-size:10px;padding:2px 1px}
+.kform_layout2Col {float:left;width:340px; position:relative;padding-right:20px;float:left}
+.kform_continueShoppingBtn {float:right;padding:.25em 1em;}
+
+/*
+Product Box styling
+*/
+.kform_catalogBox { padding:1em 0; border-bottom:1px solid #CCC}
+.kform_catalogBox h3 {margin-top:0}
+.kform_productBoxImage { max-height:100px;max-width:100px;float:left;margin-right:10px;}
+.kform_productSelect {
+	/* width:80px; */
+	/* height:26px; */
+	/* background-image:url(https://cdn.subscribefunnels.com/d6333932-4a63-48e8-b466-59b32878c024/assets/css/../images/productSelect.png); */
+	/* background-size:100% 100%; */
+	/* cursor:pointer; */
+	/* margin: 0 0 19px; */
+}
+.kform_productSelect:hover {cursor:pointer}
+.kform_productBox {/* text-align:left; *//* padding:1em; *//* max-width:400px; */margin: 0 0 15px;}
+.kform_productBox h3 {margin-top:0}
+div.kform_selectedProduct {/* background-color:#efefef; *//* margin: 0 0 15px; */}
+
+/*
+Pricing and totals styling
+*/
+.kform_pricingDiv { font-size:1em;padding:20px 0}
+.kform_pricingDiv div {width:auto}
+.kform_priceLabel{margin-right:1em;text-align:right;display:inline-block}
+#kform_price{}
+#kform_shipPrice{}
+#kform_salesTax{}
+#kform_discount{display:none;color:green}
+#kform_insurance{display:none}
+#kform_grandTotal{border-top:1px solid #ccc}
+
+.kcartTotals { width:240px}
+
+/*Upsell Page Styling */
+.kform_upsellImage {margin-right:20px;max-height:200px;max-width:200px}
+
+
+/*
+Form Error styling
+*/
+
+.kformSubmitError
+{
+	padding:10px 0;
+	font-size:16px;
+	font-family:Arial;
+	border:none;
+	color:#cc0000;
+	font-weight:bold;
+}
+.kformSubmitErrorContainer
+{
+	display:block;	
+}
+
+.kformInlineError
+{
+	padding:10px;
+	font-size:14px;
+	font-family:Arial;
+	border:none;
+	color:#cc0000;
+	font-weight:bold;
+}
+
+.kformErrorPop
+{
+	padding:10px 20px 10px 10px;
+	border:medium solid #cc0000;
+	color:#cc0000;
+	background:white;
+	font-size:14px;
+	font-family:Arial;
+	color:#cc0000;
+	font-weight:bold;
+}
+
+.kformErrorPopContainer
+{
+	position:absolute;z-index:10000;
+	box-shadow: 5px 5px 5px #888888;
+}
+
+.kformErrorOutline
+{
+	outline: thin solid red !important;	
+}
+
+
+
+/*
+Progress bar dialog styling
+*/
+.kdialogWrap{position:absolute;z-index:2000000;top:0;left:0;width:100%;height:100%;z-index:1000;-webkit-backface-visibility: hidden;}
+.kdialogBackground{position:absolute;top:0;left:0;z-index:1;background-color:#666;opacity:0.3;width:100%;height:100%;}
+
+.kdialogContent{
+	position:absolute;
+	z-index:2000000;
+	background-color:white;
+	padding:20px;
+	border-radius:5px;
+	font-size:1em;
+	min-width:200px;
+	max-width:800px;
+	font-family:Arial;
+	max-height:80%;
+	overflow-y:auto;
+}
+
+.kdialogTitle
+{
+	font-size:20px;
+	weight-weight:bold;
+	border:1px solid #CCC;
+	border-width: 0 0 1px 0;
+	font-weight:bold;
+	margin-top:0
+	
+}
+
+.kformProgressBar {width:60px;height:60px;background-image:url(https://cdn.subscribefunnels.com/d6333932-4a63-48e8-b466-59b32878c024/assets/css/../images/ajax-loader.gif);background-size:100% 100%;opacity:0.5}
+
+.kdialogXOut{width:15px;height:15px;position:absolute;top:6px;right:6px;background-image:url(https://cdn.subscribefunnels.com/d6333932-4a63-48e8-b466-59b32878c024/assets/css/../images/icon_xout.png);background-position:0 100%;background-size:100% 200%;}
+.kdialogXOut:hover{background-position:0 0;cursor:pointer;cursor:hand;}
+
+.kdialogConfirmOptions{text-align:center;margin:20px;}
+.kdialogConfirmOptions input{margin-right:20px;}
+
+
+
+@media only screen and (min-width: 980px) {
+
+
+
+.ktemplate_pageContainer {width:980px;margin:0 auto;position:relative;font-family:Arial}
+.ktemplate_boxLeft {width:620px;float:left;margin-right:20px}
+.ktemplate_boxRight {width:340px;float:right}
+.ktemplate_sideBar {width:340px;float:right;background-color:#f7f7f7;min-height:800px}
+.ktemplate_sideBar h1{margin-top:200px;text-align:center;font-size:2em;font-style:italic;font-weight:100}
+.ktemplate_userCopy{padding:40px 0;text-align:center;font-size:2em;font-weight:bold}
+.ktemplate_header {background-color:#f7f7f7;height:120px;}
+.ktemplate_header h1{text-align:center;font-size:2em;padding-top:40px;font-style:italic;font-weight:100}
+
+
+.kthanks {width:500px;margin:0 auto;font-family:Arial}
+.kthanks_box {border:1px solid black;border-radius: 5px;margin-bottom:20px;width: 100%;float:left;margin-right:20px;}
+.kthanks_boxTitle {background-color:#277098;color:white;font-size:1.4em;text-align:left;padding:5px}
+.kthanks_boxContent { padding:20px}
+
+.kthanksItemsTable { width:100%}
+.kthanksItemsTable_TitleRow td {font-weight:bold;font-size:larger}
+.kthanksItemsTable td{padding:5px}
+.kthanks_spacer { white-space:nowrap}
+.kthanks_label {font-weight:bold;width:100px;text-align:right;margin-right:10px;display:inline-block}
+.kthanks_value {display:inline-block}
+
+#kthanks_reorderLink {}
+
+#kform input[type="text"],input[type="email"],input[type="tel"],input[type="number"] {/* width:310px */}
+#kform select {/* width:340px */}
+#kform_paySourceCard{width:340px}
+.formfields {width:340px}
+.kform_submitBtn{/* width:340px */}
+
+/*styling for shopping cart, which has fields inside the .layout2Col class*/
+.kform_layout2Col_L{width:440px}
+#kform .kform_layout2Col_L input[type="text"],input[type="email"],input[type="tel"],input[type="number"] {/* width:400px */}
+#kform .kform_layout2Col_L select {width:430px}
+
+.kform_layout2Col_R {width:440px}
+.kform_layout2Col_R input[type="text"],input[type="email"],input[type="tel"],input[type="number"] {/* width:310px */}
+#kform .kform_layout2Col_R select {width:430px}
+.kform_layout2Col #kform_paySourceCard{width:430px}
+.kform_layout2Col #kform_paySourceCard input[type="text"],input[type="email"],input[type="tel"],input[type="number"] {/* width:400px */}
+.kform_kcartCheckout .kform_submitBtn{width:430px}
+
+}
+
+
+@media only screen and (min-width: 1px) and (max-width: 979px) {
+	
+.ktemplate_pageContainer {max-width:420px;margin:0 auto;position:relative;font-family:Arial}
+.kprofile_container {max-width:520px !important;}
+.ktemplate_boxLeft {max-width:400px;margin-right:20px;}
+.ktemplate_boxRight {max-width:400px;}
+.ktemplate_sideBar {max-width:400px;background-color:#f7f7f7;height:auto}
+.ktemplate_sideBar h1{margin-top:200px;text-align:center;font-size:2em;font-style:italic;font-weight:100}
+.ktemplate_userCopy{padding:40px 0;text-align:center;font-size:2em;font-weight:bold}
+.ktemplate_header {background-color:#f7f7f7;height:120px;width:400px}
+.ktemplate_header h1{text-align:center;font-size:2em;padding-top:40px;font-style:italic;font-weight:100}
+	
+.kthanks {width:400px;margin:0 auto;font-family:Arial;font-size:12px}
+.kthanks_box {border:1px solid black;border-radius: 5px;margin-bottom:20px;float:left;margin-right:20px;width:400px}
+.kthanks_boxTitle {background-color:#277098;color:white;font-size:1.4em;text-align:left;padding:5px}
+.kthanks_boxContent { padding:20px}
+
+.kthanksItemsTable { width:100%}
+.kthanksItemsTable_TitleRow td {font-weight:bold;}
+.kthanksItemsTable td{padding:5px}
+.kthanks_spacer { white-space:nowrap;font-size:12px}
+.kthanks_label {font-weight:bold;width:100px;text-align:right;margin-right:10px;display:inline-block}
+.kthanks_value {display:inline-block}
+
+.kprofileTitle {width:460px !important}
+
+#kthanks_reorderLink {}
+
+.formfields {width:400px}
+#kform input {/* font-size:16px */}
+#kform select {font-size:16px}
+
+.kform_submitBtn{/* width:400px; *//* font-size:32px !important */}
+}
+
+
+#kcartSigninButton {cursor:pointer;color:blue}

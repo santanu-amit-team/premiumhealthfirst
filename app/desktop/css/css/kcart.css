@@ -1,0 +1,72 @@
+#kcart {}
+#kcartTitle { font-size:larger;font-weight:bold;padding:0;margin:0}
+#kcartTable { width:100%;margin:0px auto 15px auto;font-size:.8em;border-spacing:0}
+#kcartTable td{border-bottom:1px solid #ccc;padding:6px 10px}
+#kcartTitleRow {background-color:#f8f8f8;font-weight:bold;}
+#kcartTitleRow td{font-size:1em;line-height:60px;border-top:1px solid #ccc;}
+.kcartItemQty {width:30px;display:inline-block;text-align:center}
+.kcartMinusBtn {display:inline-block;vertical-align:-1px;width:20px;cursor:pointer;font-size:24px;font-family:monospace;text-align:center;font-weight:bold}
+.kcartPlusBtn  {display:inline-block;width:20px;cursor:pointer;font-size:24px;font-family:monospace;text-align:center;font-weight:bold}
+
+.kcartProductImage {max-width:150px;max-height:75px;vertical-align:middle}
+.kcartRemoveBtn {font-size:10px;padding:2px 1px}
+
+#kcartEmptyCartWarning {text-align:center;font-size:1.2em;font-style:italic;padding:2em 0 !important}
+.kcartShopButton {display:block;float:right;}
+
+table.kcartTotals{border:none}
+.kcartTotals td{border:none;}
+
+.kcartSubTotal {}
+.kcartShipTotal {}
+.kcartDiscount {color:green}
+.kcartSalesTax {}
+td.kcartGrandTotal {font-weight:bold}
+.kcartInsurance {}
+
+.kcartAddToCartButton {
+	float:right;
+	width:100px;
+	height:26px;
+	background-image:url(https://cdn.subscribefunnels.com/d6333932-4a63-48e8-b466-59b32878c024/assets/css/../images/add-to-cart.png);
+	background-size:100% 100%;
+	cursor:pointer;
+}
+
+
+.kcartWidget{
+	border:none !important;
+	position:relative;
+	color:black;
+	text-decoration:none;
+}
+.kcartWidgetImage{
+	width:90px;
+	height:90px;
+	display:inline-block;
+	vertical-align:-15px;
+	background-image:url(https://cdn.subscribefunnels.com/d6333932-4a63-48e8-b466-59b32878c024/assets/css/../images/cart.png);
+	background-size:100% 100%;
+	opacity:1;
+	position:relative;
+}
+.kcartWidgetText{
+	height:90px;
+	display:inline-block;
+	font-size:18px;
+	line-height:1.1;
+	font-weight:bold;
+	font-family:sans-serif;
+}
+.kcartWidgetOpenLink{
+	color:blue;
+	text-decoration:underline;
+	font-size:smaller;	
+}
+
+
+#kcartSignin {width:220px}
+#kformSignup input[type=text],input[type=password] {margin:5px 0;min-width:220px;padding:2px 0;text-indent:5px;}
+
+.kcartLogoutWrap{line-height:1;font-size:smaller}
+#kcartLogout{display:inline-block;margin-left:10px;color:blue;cursor:pointer}
